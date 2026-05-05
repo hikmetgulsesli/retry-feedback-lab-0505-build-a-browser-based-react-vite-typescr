@@ -6,9 +6,19 @@ import { EmptyStateDashboard } from './screens/EmptyStateDashboard';
 import { StorageErrorState } from './screens/StorageErrorState';
 import { Settings } from './screens/Settings';
 import { LeadsDashboard } from './screens/LeadsDashboard';
+import { LeadCreateeditForm } from './screens/LeadCreateeditForm';
+import { ProfilePanel } from './screens/ProfilePanel';
+import { useState } from 'react';
+
+export type ModalView = 'none' | 'leadForm' | 'profile';
 
 export default function App() {
   const [state, actions] = useAppState();
+  const [modal, setModal] = useState<ModalView>('none');
+
+  const openLeadForm = () => setModal('leadForm');
+  const openProfile = () => setModal('profile');
+  const closeModal = () => setModal('none');
 
   if (state.storageError) {
     return (
@@ -22,12 +32,34 @@ export default function App() {
 
   return (
     <AppContext.Provider value={{ state, actions }}>
-      {page === 'leads' && state.tasks.length === 0 && <EmptyStateDashboard />}
-      {page === 'leads' && state.tasks.length > 0 && <LeadsDashboard />}
-      {page === 'pipeline' && <PipelineBoard />}
-      {page === 'insights' && <InsightsDashboard />}
-      {page === 'settings' && <Settings />}
-      {page === 'error' && <StorageErrorState />}
+      <div className="relative h-screen w-screen overflow-hidden bg-background">
+        {page === 'leads' && state.tasks.length === 0 && (
+          <EmptyStateDashboard onCreateLead={openLeadForm} />
+        )}
+        {page === 'leads' && state.tasks.length > 0 && (
+          <LeadsDashboard onCreateLead={openLeadForm} onOpenProfile={openProfile} />
+        )}
+        {page === 'pipeline' && (
+          <PipelineBoard onCreateLead={openLeadForm} onOpenProfile={openProfile} />
+        )}
+        {page === 'insights' && (
+          <InsightsDashboard onOpenProfile={openProfile} />
+        )}
+        {page === 'settings' && (
+          <Settings onOpenProfile={openProfile} />
+        )}
+        {page === 'error' && <StorageErrorState />}
+
+        {modal === 'leadForm' && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+            <LeadCreateeditForm onClose={closeModal} onSave={actions.addTask} />
+          </div>
+        )}
+
+        {modal === 'profile' && (
+          <ProfilePanel onClose={closeModal} />
+        )}
+      </div>
     </AppContext.Provider>
   );
 }

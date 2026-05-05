@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, createContext, useContext } from 'react';
-import type { AppState, Page, AppSettings } from '../types/domain';
+import type { AppState, Page, AppSettings, Task } from '../types/domain';
 import { DEFAULT_STATE } from '../types/domain';
 import { loadState, saveState, clearState, StorageError } from '../utils/storage';
 
@@ -9,6 +9,9 @@ export interface AppActions {
   updateSettings: (settings: Partial<AppSettings>) => void;
   resetLocalData: () => void;
   dismissStorageError: () => void;
+  addTask: (task: Omit<Task, 'id'>) => void;
+  updateTask: (id: string, partial: Partial<Task>) => void;
+  deleteTask: (id: string) => void;
 }
 
 export const AppContext = createContext<{ state: AppState; actions: AppActions } | null>(null);
@@ -22,54 +25,19 @@ export function useAppContext() {
 export function useAppState(): [AppState, AppActions] {
   const [state, setState] = useState<AppState>(() => loadState());
 
-  const persist = useCallback((next: AppState) => {
-    try {
-      saveState(next);
-      setState(next);
-    } catch (e) {
-      if (e instanceof StorageError) {
-        setState((prev) => ({ ...prev, storageError: true }));
-      }
-    }
-  }, []);
-
   const navigate = useCallback((page: Page) => {
-    setState((prev) => {
-      const next = { ...prev, currentPage: page };
-      try {
-        saveState(next);
-      } catch {
-        next.storageError = true;
-      }
-      return next;
-    });
+    setState((prev) => ({ ...prev, currentPage: page }));
   }, []);
 
   const setSearchQuery = useCallback((query: string) => {
-    setState((prev) => {
-      const next = { ...prev, searchQuery: query };
-      try {
-        saveState(next);
-      } catch {
-        next.storageError = true;
-      }
-      return next;
-    });
+    setState((prev) => ({ ...prev, searchQuery: query }));
   }, []);
 
   const updateSettings = useCallback((partial: Partial<AppSettings>) => {
-    setState((prev) => {
-      const next = {
-        ...prev,
-        settings: { ...prev.settings, ...partial },
-      };
-      try {
-        saveState(next);
-      } catch {
-        next.storageError = true;
-      }
-      return next;
-    });
+    setState((prev) => ({
+      ...prev,
+      settings: { ...prev.settings, ...partial },
+    }));
   }, []);
 
   const resetLocalData = useCallback(() => {
@@ -81,15 +49,36 @@ export function useAppState(): [AppState, AppActions] {
     setState((prev) => ({ ...prev, storageError: false }));
   }, []);
 
-  // Persist on mount if state loaded with defaults
+  const addTask = useCallback((task: Omit<Task, 'id'>) => {
+    const newTask: Task = { ...task, id: crypto.randomUUID() };
+    setState((prev) => ({ ...prev, tasks: [...prev.tasks, newTask] }));
+  }, []);
+
+  const updateTask = useCallback((id: string, partial: Partial<Task>) => {
+    setState((prev) => ({
+      ...prev,
+      tasks: prev.tasks.map((t) => (t.id === id ? { ...t, ...partial } : t)),
+    }));
+  }, []);
+
+  const deleteTask = useCallback((id: string) => {
+    setState((prev) => ({
+      ...prev,
+      tasks: prev.tasks.filter((t) => t.id !== id),
+    }));
+  }, []);
+
+  // Persist state to localStorage whenever it changes
   useEffect(() => {
+    if (state.storageError) return;
     try {
       saveState(state);
-    } catch {
-      setState((prev) => ({ ...prev, storageError: true }));
+    } catch (e) {
+      if (e instanceof StorageError) {
+        setState((prev) => ({ ...prev, storageError: true }));
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state]);
 
   const actions: AppActions = {
     navigate,
@@ -97,6 +86,9 @@ export function useAppState(): [AppState, AppActions] {
     updateSettings,
     resetLocalData,
     dismissStorageError,
+    addTask,
+    updateTask,
+    deleteTask,
   };
 
   return [state, actions];

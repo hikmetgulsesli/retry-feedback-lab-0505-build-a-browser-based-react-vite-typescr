@@ -10,10 +10,13 @@
 import { useState } from "react";
 import { useAppContext } from "../hooks/useAppState";
 
-interface EmptyStateDashboardProps {}
+interface EmptyStateDashboardProps {
+  onCreateLead?: () => void;
+}
 
 export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
   const { state, actions } = useAppContext();
+  const { onCreateLead } = props;
   const [search, setSearch] = useState(state.searchQuery);
 
   const nav = (page: string) => (e: React.MouseEvent) => {
@@ -26,7 +29,7 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
   return (
     <>
       {/* TopNavBar (Web) */}
-      <header className="hidden md:flex justify-between items-center w-full px-4 h-11 bg-slate-900 dark:bg-slate-950 border-b border-slate-700 dark:border-slate-800 font-inter text-sm antialiased sticky top-0 z-50">
+      <header className="hidden md:flex justify-between items-center w-full px-4 h-11 bg-slate-900 dark:bg-slate-950 border-b border-slate-700 dark:border-slate-800 font-[var(--font-body-md)] text-sm antialiased sticky top-0 z-50">
       <div className="flex items-center gap-4">
       <span className="text-lg font-bold text-slate-100">Greenhouse Ops</span>
       </div>
@@ -37,13 +40,13 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       <input className="bg-slate-800 border-none rounded text-sm text-slate-100 pl-8 pr-3 py-1 focus:ring-1 focus:ring-blue-500 placeholder-slate-500 w-64 h-7" placeholder="Search operations..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
       <div className="flex items-center gap-2">
-      <button aria-label="notifications" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Notifications" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined text-[20px]">notifications</span>
       </button>
-      <button aria-label="help_outline" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Help" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined text-[20px]">help_outline</span>
       </button>
-      <button aria-label="account_circle" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Account" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined text-[20px]">account_circle</span>
       </button>
       </div>
@@ -58,28 +61,28 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       </header>
       <div className="flex flex-1 overflow-hidden">
       {/* SideNavBar (Web) */}
-      <nav className="hidden md:flex flex-col z-40 bg-slate-900 dark:bg-slate-950 border-r border-slate-700 dark:border-slate-800 w-64 font-inter text-xs tracking-tight h-[calc(100vh-44px)] sticky top-[44px]">
+      <nav className="hidden md:flex flex-col z-40 bg-slate-900 dark:bg-slate-950 border-r border-slate-700 dark:border-slate-800 w-64 font-[var(--font-body-sm)] text-xs tracking-tight h-[calc(100vh-44px)] sticky top-[44px]">
       <div className="p-4 border-b border-slate-800 mb-2">
       <h2 className="text-slate-100 font-semibold text-sm">Maintenance Console</h2>
       <p className="text-slate-500 text-[10px] mt-0.5 uppercase tracking-wider">v2.4.0 High-Density</p>
       </div>
       <div className="flex flex-col gap-1 px-2">
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} href="#" onClick={nav('leads')}>
+      <button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} onClick={nav('leads')}>
       <span className="material-symbols-outlined mr-3 text-[18px]">leaderboard</span>
       <span className={`font-medium text-[13px] ${page === 'leads' ? '' : ''}`}>Leads</span>
-      </a>
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} href="#" onClick={nav('pipeline')}>
+      </button>
+      <button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} onClick={nav('pipeline')}>
       <span className="material-symbols-outlined mr-3 text-[18px]">view_kanban</span>
       <span className="font-medium text-[13px]">Pipeline</span>
-      </a>
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} href="#" onClick={nav('insights')}>
+      </button>
+      <button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} onClick={nav('insights')}>
       <span className="material-symbols-outlined mr-3 text-[18px]">analytics</span>
       <span className="font-medium text-[13px]">Insights</span>
-      </a>
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} href="#" onClick={nav('settings')}>
+      </button>
+      <button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} onClick={nav('settings')}>
       <span className="material-symbols-outlined mr-3 text-[18px]">settings</span>
       <span className="font-medium text-[13px]">Settings</span>
-      </a>
+      </button>
       </div>
       </nav>
       {/* Main Content Area */}
@@ -90,7 +93,7 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       <h1 className="font-h1 text-h1 text-on-surface">Lead Management</h1>
       <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Review and manage incoming maintenance requests.</p>
       </div>
-      <button onClick={() => actions.navigate('leads')} className="hidden md:flex h-touch_target px-6 bg-primary-container text-on-primary-container rounded font-label-md text-label-md items-center justify-center hover:bg-primary-container/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+      <button onClick={onCreateLead} className="hidden md:flex h-touch_target px-6 bg-primary-container text-on-primary-container rounded font-label-md text-label-md items-center justify-center hover:bg-primary-container/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
       <span className="material-symbols-outlined mr-2 text-[18px]">add</span>
                           Create Lead
                       </button>
@@ -111,7 +114,7 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
                               Start tracking your greenhouse operations by adding your first lead.
                           </p>
       {/* CTA */}
-      <button onClick={() => actions.navigate('leads')} className="h-touch_target px-8 bg-primary-container text-on-primary-container rounded font-label-md text-label-md flex items-center justify-center hover:bg-primary-container/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+      <button onClick={onCreateLead} className="h-touch_target px-8 bg-primary-container text-on-primary-container rounded font-label-md text-label-md flex items-center justify-center hover:bg-primary-container/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
       <span className="material-symbols-outlined mr-2 text-[18px]">add</span>
                               Create Lead
                           </button>
@@ -121,30 +124,30 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       </div>
       {/* BottomNavBar (Mobile) */}
       <nav className="md:hidden fixed bottom-0 w-full bg-slate-900 dark:bg-slate-950 border-t border-slate-700 dark:border-slate-800 flex justify-around items-center h-[60px] z-50 px-2 pb-safe">
-      <a className={`flex flex-col items-center justify-center w-full h-full ${page === 'leads' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} href="#" onClick={nav('leads')}>
+      <button className={`flex flex-col items-center justify-center w-full h-full ${page === 'leads' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} onClick={nav('leads')}>
       <div className={`px-4 py-1 rounded-full mb-1 ${page === 'leads' ? 'bg-blue-600/10' : ''}`}>
       <span className="material-symbols-outlined text-[20px]" style={{fontVariationSettings: page === 'leads' ? "'FILL' 1" : "'FILL' 0"}}>leaderboard</span>
       </div>
-      <span className="font-inter text-[10px] font-medium">Leads</span>
-      </a>
-      <a className={`flex flex-col items-center justify-center w-full h-full ${page === 'pipeline' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} href="#" onClick={nav('pipeline')}>
+      <span className="font-[var(--font-body-sm)] text-[10px] font-medium">Leads</span>
+      </button>
+      <button className={`flex flex-col items-center justify-center w-full h-full ${page === 'pipeline' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} onClick={nav('pipeline')}>
       <div className={`px-4 py-1 rounded-full mb-1 ${page === 'pipeline' ? 'bg-blue-600/10' : ''}`}>
       <span className="material-symbols-outlined text-[20px]">view_kanban</span>
       </div>
-      <span className="font-inter text-[10px] font-medium">Pipeline</span>
-      </a>
-      <a className={`flex flex-col items-center justify-center w-full h-full ${page === 'insights' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} href="#" onClick={nav('insights')}>
+      <span className="font-[var(--font-body-sm)] text-[10px] font-medium">Pipeline</span>
+      </button>
+      <button className={`flex flex-col items-center justify-center w-full h-full ${page === 'insights' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} onClick={nav('insights')}>
       <div className={`px-4 py-1 rounded-full mb-1 ${page === 'insights' ? 'bg-blue-600/10' : ''}`}>
       <span className="material-symbols-outlined text-[20px]">analytics</span>
       </div>
-      <span className="font-inter text-[10px] font-medium">Insights</span>
-      </a>
-      <a className={`flex flex-col items-center justify-center w-full h-full ${page === 'settings' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} href="#" onClick={nav('settings')}>
+      <span className="font-[var(--font-body-sm)] text-[10px] font-medium">Insights</span>
+      </button>
+      <button className={`flex flex-col items-center justify-center w-full h-full ${page === 'settings' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} onClick={nav('settings')}>
       <div className={`px-4 py-1 rounded-full mb-1 ${page === 'settings' ? 'bg-blue-600/10' : ''}`}>
       <span className="material-symbols-outlined text-[20px]">settings</span>
       </div>
-      <span className="font-inter text-[10px] font-medium">Settings</span>
-      </a>
+      <span className="font-[var(--font-body-sm)] text-[10px] font-medium">Settings</span>
+      </button>
       </nav>
     </>
   );

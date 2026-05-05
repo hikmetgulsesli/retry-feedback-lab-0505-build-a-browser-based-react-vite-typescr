@@ -9,15 +9,18 @@
 
 import { useState } from "react";
 
-interface ProfilePanelProps {}
+interface ProfilePanelProps {
+  onClose: () => void;
+}
 
 export function ProfilePanel(props: ProfilePanelProps) {
+  const { onClose } = props;
   return (
     <>
       {/* Main Content Area (Background) */}
       <div className="flex-1 flex flex-col relative overflow-hidden">
       {/* TopNavBar (Simulated Background) */}
-      <header className="bg-slate-900 dark:bg-slate-950 font-inter text-sm antialiased docked full-width top-0 border-b border-slate-700 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-4 h-11 z-10 hidden md:flex">
+      <header className="bg-slate-900 dark:bg-slate-950 font-[var(--font-body-md)] text-sm antialiased docked full-width top-0 border-b border-slate-700 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-4 h-11 z-10 hidden md:flex">
       <div className="flex items-center gap-4">
       <span className="text-lg font-bold text-slate-100">Greenhouse Ops</span>
       </div>
@@ -52,7 +55,7 @@ export function ProfilePanel(props: ProfilePanelProps) {
       {/* Header */}
       <div className="flex items-center justify-between p-lg border-b border-outline-variant shrink-0">
       <h2 className="font-h2 text-h2 text-on-surface">Profile</h2>
-      <button className="h-touch_target w-touch_target flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded transition-colors -mr-2">
+      <button onClick={onClose} className="h-touch_target w-touch_target flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded transition-colors -mr-2">
       <span className="material-symbols-outlined text-[20px]">close</span>
       </button>
       </div>

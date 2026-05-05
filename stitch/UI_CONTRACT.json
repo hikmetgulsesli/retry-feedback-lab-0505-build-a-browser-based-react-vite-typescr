@@ -1,0 +1,1291 @@
+[
+  {
+    "screenId": "6828e03647944bfb84ed4dfcc7cf7d51",
+    "screenTitle": "Lead Create/Edit Form",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "close",
+        "line": 116
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 185
+      },
+      {
+        "type": "button",
+        "label": "Lead",
+        "line": 188
+      },
+      {
+        "type": "input",
+        "label": "Jane Doe",
+        "inputType": "text",
+        "placeholder": "Jane Doe",
+        "line": 128
+      },
+      {
+        "type": "input",
+        "label": "Acme Corp",
+        "inputType": "text",
+        "placeholder": "Acme Corp",
+        "line": 133
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 142
+      },
+      {
+        "type": "input",
+        "label": "0.00",
+        "inputType": "number",
+        "placeholder": "0.00",
+        "line": 157
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 164
+      },
+      {
+        "type": "input",
+        "label": "date",
+        "inputType": "date",
+        "line": 178
+      },
+      {
+        "type": "form",
+        "label": "form",
+        "line": 122
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "close",
+        "line": 116
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 185
+      },
+      {
+        "type": "button",
+        "label": "Lead",
+        "line": 188
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Jane Doe",
+        "inputType": "text",
+        "placeholder": "Jane Doe",
+        "line": 128
+      },
+      {
+        "type": "input",
+        "label": "Acme Corp",
+        "inputType": "text",
+        "placeholder": "Acme Corp",
+        "line": 133
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 142
+      },
+      {
+        "type": "input",
+        "label": "0.00",
+        "inputType": "number",
+        "placeholder": "0.00",
+        "line": 157
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 164
+      },
+      {
+        "type": "input",
+        "label": "date",
+        "inputType": "date",
+        "line": 178
+      }
+    ],
+    "hardcodedData": [
+      "Jane Doe"
+    ],
+    "totalInteractive": 10,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "b885aa71b4824aa0a91d5c1368b93532",
+    "screenTitle": "Profile Panel",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "close",
+        "line": 146
+      },
+      {
+        "type": "button",
+        "label": "Manage Profile",
+        "line": 195
+      },
+      {
+        "type": "button",
+        "label": "&amp; Permissions",
+        "line": 199
+      },
+      {
+        "type": "button",
+        "label": "Sign Out",
+        "line": 207
+      },
+      {
+        "type": "input",
+        "label": "Search...",
+        "inputType": "text",
+        "placeholder": "Search...",
+        "line": 118
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "close",
+        "line": 146
+      },
+      {
+        "type": "button",
+        "label": "Manage Profile",
+        "line": 195
+      },
+      {
+        "type": "button",
+        "label": "&amp; Permissions",
+        "line": 199
+      },
+      {
+        "type": "button",
+        "label": "Sign Out",
+        "line": 207
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search...",
+        "inputType": "text",
+        "placeholder": "Search...",
+        "line": 118
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 5,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "8bf826f189124eda96f2da21ca1a8806",
+    "screenTitle": "Pipeline Board",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 155
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 181
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 184
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 198
+      },
+      {
+        "type": "button",
+        "label": "New Lead",
+        "line": 202
+      },
+      {
+        "type": "input",
+        "label": "Search data...",
+        "inputType": "text",
+        "placeholder": "Search data...",
+        "line": 174
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 155
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 160
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 181
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 184
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 198
+      },
+      {
+        "type": "button",
+        "label": "New Lead",
+        "line": 202
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search data...",
+        "inputType": "text",
+        "placeholder": "Search data...",
+        "line": 174
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 10,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "9335752559b3466cb0edc9de2d151b99",
+    "screenTitle": "Pipeline Board",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 155
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 181
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 184
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 198
+      },
+      {
+        "type": "button",
+        "label": "New Lead",
+        "line": 202
+      },
+      {
+        "type": "input",
+        "label": "Search data...",
+        "inputType": "text",
+        "placeholder": "Search data...",
+        "line": 174
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 155
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 160
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 181
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 184
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 198
+      },
+      {
+        "type": "button",
+        "label": "New Lead",
+        "line": 202
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search data...",
+        "inputType": "text",
+        "placeholder": "Search data...",
+        "line": 174
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 10,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "98963c03bdc14bbf955d8c01d2bcdac2",
+    "screenTitle": "Storage Error State",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Retry",
+        "line": 147
+      },
+      {
+        "type": "button",
+        "label": "Reset Local Data",
+        "line": 151
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Retry",
+        "line": 147
+      },
+      {
+        "type": "button",
+        "label": "Reset Local Data",
+        "line": 151
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 2,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "fcb1d45bc8ca410d8b459c630f9dec03",
+    "screenTitle": "Insights Dashboard",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 120
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 157
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "Last 30 Days",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 177
+      },
+      {
+        "type": "button",
+        "label": "more_vert",
+        "line": 247
+      },
+      {
+        "type": "input",
+        "label": "Search...",
+        "inputType": "text",
+        "placeholder": "Search...",
+        "line": 153
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 120
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 138
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 157
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "Last 30 Days",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 177
+      },
+      {
+        "type": "button",
+        "label": "more_vert",
+        "line": 247
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search...",
+        "inputType": "text",
+        "placeholder": "Search...",
+        "line": 153
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 10,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "0693f3906a6643d2a8561c082189d399",
+    "screenTitle": "Settings",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 120
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 121
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 122
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 123
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 138
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 139
+      },
+      {
+        "type": "button",
+        "label": "Reset Local Storage",
+        "line": 216
+      },
+      {
+        "type": "input",
+        "label": "Search...",
+        "inputType": "text",
+        "placeholder": "Search...",
+        "line": 134
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 159
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 167
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 184
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 201
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 120
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 121
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 122
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 123
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 138
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 139
+      },
+      {
+        "type": "button",
+        "label": "Reset Local Storage",
+        "line": 216
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search...",
+        "inputType": "text",
+        "placeholder": "Search...",
+        "line": 134
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 159
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 167
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 184
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 201
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 12,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "f83dcb1b07d94f6d9d6caaebcb9809b5",
+    "screenTitle": "Empty State Dashboard",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 220
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 225
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 229
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 233
+      },
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 278
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 284
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 290
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 296
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 192
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 195
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 198
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 207
+      },
+      {
+        "type": "button",
+        "label": "Create Lead",
+        "line": 247
+      },
+      {
+        "type": "button",
+        "label": "Create Lead",
+        "line": 268
+      },
+      {
+        "type": "input",
+        "label": "Search operations...",
+        "inputType": "text",
+        "placeholder": "Search operations...",
+        "line": 189
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 220
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 225
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 229
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 233
+      },
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 278
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 284
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 290
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 296
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 192
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 195
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 198
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 207
+      },
+      {
+        "type": "button",
+        "label": "Create Lead",
+        "line": 247
+      },
+      {
+        "type": "button",
+        "label": "Create Lead",
+        "line": 268
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search operations...",
+        "inputType": "text",
+        "placeholder": "Search operations...",
+        "line": 189
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 15,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "32ca59c01b0d4262860fb66a301f0a60",
+    "screenTitle": "Insights Dashboard",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 120
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 157
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "Last 30 Days",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 177
+      },
+      {
+        "type": "button",
+        "label": "more_vert",
+        "line": 247
+      },
+      {
+        "type": "input",
+        "label": "Search...",
+        "inputType": "text",
+        "placeholder": "Search...",
+        "line": 153
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 120
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 138
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 157
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "Last 30 Days",
+        "line": 173
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 177
+      },
+      {
+        "type": "button",
+        "label": "more_vert",
+        "line": 247
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search...",
+        "inputType": "text",
+        "placeholder": "Search...",
+        "line": 153
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 10,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "a16ba1b7eaca41d3a980e4069d2590c5",
+    "screenTitle": "Leads Dashboard",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 194
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 198
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 202
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 206
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 225
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 228
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 231
+      },
+      {
+        "type": "button",
+        "label": "New Lead",
+        "line": 249
+      },
+      {
+        "type": "button",
+        "label": "Status: All",
+        "line": 257
+      },
+      {
+        "type": "button",
+        "label": "New 12",
+        "line": 262
+      },
+      {
+        "type": "button",
+        "label": "Contacted",
+        "line": 265
+      },
+      {
+        "type": "button",
+        "label": "In Progress",
+        "line": 268
+      },
+      {
+        "type": "button",
+        "label": "chevron_left",
+        "line": 362
+      },
+      {
+        "type": "button",
+        "label": "chevron_right",
+        "line": 365
+      },
+      {
+        "type": "input",
+        "label": "Search operations...",
+        "inputType": "text",
+        "placeholder": "Search operations...",
+        "line": 221
+      },
+      {
+        "type": "input",
+        "label": "Filter leads...",
+        "inputType": "text",
+        "placeholder": "Filter leads...",
+        "line": 247
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Leads",
+        "href": "#",
+        "line": 194
+      },
+      {
+        "type": "link",
+        "label": "Pipeline",
+        "href": "#",
+        "line": 198
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 202
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 206
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 225
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 228
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 231
+      },
+      {
+        "type": "button",
+        "label": "New Lead",
+        "line": 249
+      },
+      {
+        "type": "button",
+        "label": "Status: All",
+        "line": 257
+      },
+      {
+        "type": "button",
+        "label": "New 12",
+        "line": 262
+      },
+      {
+        "type": "button",
+        "label": "Contacted",
+        "line": 265
+      },
+      {
+        "type": "button",
+        "label": "In Progress",
+        "line": 268
+      },
+      {
+        "type": "button",
+        "label": "chevron_left",
+        "line": 362
+      },
+      {
+        "type": "button",
+        "label": "chevron_right",
+        "line": 365
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search operations...",
+        "inputType": "text",
+        "placeholder": "Search operations...",
+        "line": 221
+      },
+      {
+        "type": "input",
+        "label": "Filter leads...",
+        "inputType": "text",
+        "placeholder": "Filter leads...",
+        "line": 247
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 16,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]

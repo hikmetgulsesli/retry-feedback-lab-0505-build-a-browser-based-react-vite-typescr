@@ -8,6 +8,7 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
+import { useAppContext } from "../hooks/useAppState";
 
 interface ProfilePanelProps {
   onClose: () => void;
@@ -15,6 +16,37 @@ interface ProfilePanelProps {
 
 export function ProfilePanel(props: ProfilePanelProps) {
   const { onClose } = props;
+  const { state, actions } = useAppContext();
+  const [search, setSearch] = useState(state.searchQuery);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    actions.setSearchQuery(e.target.value);
+  };
+
+  const handlePushToggle = () => {
+    actions.updateSettings({ pushAlerts: !state.settings.pushAlerts });
+  };
+
+  const handleEmailToggle = () => {
+    actions.updateSettings({ emailAlerts: !state.settings.emailAlerts });
+  };
+
+  const handleManageProfile = () => {
+    actions.navigate('settings');
+    onClose();
+  };
+
+  const handleSecurity = () => {
+    actions.navigate('settings');
+    onClose();
+  };
+
+  const handleSignOut = () => {
+    actions.resetLocalData();
+    onClose();
+  };
+
   return (
     <>
       {/* Main Content Area (Background) */}
@@ -27,7 +59,7 @@ export function ProfilePanel(props: ProfilePanelProps) {
       <div className="flex items-center gap-4">
       <div className="relative flex items-center h-full">
       <span className="material-symbols-outlined text-slate-400 absolute left-2 text-[18px]">search</span>
-      <input className="bg-slate-800 border-none text-slate-200 placeholder-slate-400 pl-8 pr-3 py-1 rounded h-7 text-xs focus:ring-1 focus:ring-blue-500 outline-none w-48" placeholder="Search..." type="text" />
+      <input className="bg-slate-800 border-none text-slate-200 placeholder-slate-400 pl-8 pr-3 py-1 rounded h-7 text-xs focus:ring-1 focus:ring-blue-500 outline-none w-48" placeholder="Search..." type="text" value={search} onChange={handleSearchChange} />
       </div>
       <div className="flex items-center gap-3 text-slate-400">
       <span className="material-symbols-outlined hover:text-slate-200 cursor-pointer text-[20px]">notifications</span>
@@ -55,7 +87,7 @@ export function ProfilePanel(props: ProfilePanelProps) {
       {/* Header */}
       <div className="flex items-center justify-between p-lg border-b border-outline-variant shrink-0">
       <h2 className="font-h2 text-h2 text-on-surface">Profile</h2>
-      <button onClick={onClose} className="h-touch_target w-touch_target flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded transition-colors -mr-2">
+      <button onClick={onClose} className="h-touch_target w-touch_target flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded transition-colors -mr-2" aria-label="Close profile panel">
       <span className="material-symbols-outlined text-[20px]">close</span>
       </button>
       </div>
@@ -81,34 +113,34 @@ export function ProfilePanel(props: ProfilePanelProps) {
       <h4 className="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest border-b border-outline-variant pb-xs">Notifications</h4>
       <div className="space-y-sm">
       {/* Push Toggle */}
-      <label className="flex items-center justify-between min-h-touch_target p-sm hover:bg-surface-variant rounded cursor-pointer transition-colors -mx-sm">
+      <label className="flex items-center justify-between min-h-touch_target p-sm hover:bg-surface-variant rounded cursor-pointer transition-colors -mx-sm" onClick={handlePushToggle}>
       <div className="flex items-center gap-md">
       <span className="material-symbols-outlined text-[20px] text-on-surface-variant">notifications_active</span>
       <span className="font-body-md text-body-md text-on-surface">Push Alerts</span>
       </div>
-      <div className="relative inline-flex items-center h-6 rounded-full w-11 bg-primary-container">
-      <span className="translate-x-6 inline-block w-4 h-4 transform bg-on-primary-container rounded-full transition shadow"></span>
+      <div className={`relative inline-flex items-center h-6 rounded-full w-11 ${state.settings.pushAlerts ? 'bg-primary-container' : 'bg-surface-variant border border-outline-variant'}`}>
+      <span className={`${state.settings.pushAlerts ? 'translate-x-6' : 'translate-x-1'} inline-block w-4 h-4 transform bg-on-primary-container rounded-full transition-transform shadow`}></span>
       </div>
       </label>
       {/* Email Toggle */}
-      <label className="flex items-center justify-between min-h-touch_target p-sm hover:bg-surface-variant rounded cursor-pointer transition-colors -mx-sm">
+      <label className="flex items-center justify-between min-h-touch_target p-sm hover:bg-surface-variant rounded cursor-pointer transition-colors -mx-sm" onClick={handleEmailToggle}>
       <div className="flex items-center gap-md">
       <span className="material-symbols-outlined text-[20px] text-on-surface-variant">mail</span>
       <span className="font-body-md text-body-md text-on-surface">Email Summaries</span>
       </div>
-      <div className="relative inline-flex items-center h-6 rounded-full w-11 bg-surface-variant border border-outline-variant">
-      <span className="translate-x-1 inline-block w-4 h-4 transform bg-outline rounded-full transition shadow"></span>
+      <div className={`relative inline-flex items-center h-6 rounded-full w-11 ${state.settings.emailAlerts ? 'bg-primary-container' : 'bg-surface-variant border border-outline-variant'}`}>
+      <span className={`${state.settings.emailAlerts ? 'translate-x-6' : 'translate-x-1'} inline-block w-4 h-4 transform bg-on-primary-container rounded-full transition-transform shadow`}></span>
       </div>
       </label>
       </div>
       </div>
       <div className="space-y-md">
       <h4 className="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest border-b border-outline-variant pb-xs">Account</h4>
-      <button className="w-full flex items-center gap-md min-h-touch_target p-sm hover:bg-surface-variant rounded cursor-pointer transition-colors text-on-surface -mx-sm text-left">
+      <button onClick={handleManageProfile} className="w-full flex items-center gap-md min-h-touch_target p-sm hover:bg-surface-variant rounded cursor-pointer transition-colors text-on-surface -mx-sm text-left" aria-label="Manage Profile">
       <span className="material-symbols-outlined text-[20px] text-on-surface-variant">manage_accounts</span>
       <span className="font-body-md text-body-md">Manage Profile</span>
       </button>
-      <button className="w-full flex items-center gap-md min-h-touch_target p-sm hover:bg-surface-variant rounded cursor-pointer transition-colors text-on-surface -mx-sm text-left">
+      <button onClick={handleSecurity} className="w-full flex items-center gap-md min-h-touch_target p-sm hover:bg-surface-variant rounded cursor-pointer transition-colors text-on-surface -mx-sm text-left" aria-label="Security and Permissions">
       <span className="material-symbols-outlined text-[20px] text-on-surface-variant">security</span>
       <span className="font-body-md text-body-md">Security &amp; Permissions</span>
       </button>
@@ -116,7 +148,7 @@ export function ProfilePanel(props: ProfilePanelProps) {
       </div>
       {/* Footer Actions */}
       <div className="p-lg border-t border-outline-variant bg-surface-container shrink-0">
-      <button className="w-full h-touch_target flex items-center justify-center gap-sm bg-transparent border border-outline-variant hover:border-error hover:text-error text-on-surface font-label-md text-label-md rounded transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container">
+      <button onClick={handleSignOut} className="w-full h-touch_target flex items-center justify-center gap-sm bg-transparent border border-outline-variant hover:border-error hover:text-error text-on-surface font-label-md text-label-md rounded transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container" aria-label="Sign Out">
       <span className="material-symbols-outlined text-[18px]">logout</span>
                       Sign Out
                   </button>

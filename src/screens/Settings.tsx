@@ -49,6 +49,11 @@ export function Settings(props: SettingsProps) {
     actions.resetLocalData();
   };
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    actions.setSearchQuery(e.target.value);
+  };
+
   return (
     <>
       {/* SideNavBar */}
@@ -72,7 +77,7 @@ export function Settings(props: SettingsProps) {
       <span className="text-lg font-bold text-slate-100">Greenhouse Ops</span>
       <div className="relative flex items-center ml-8">
       <span className="material-symbols-outlined absolute left-2 text-slate-400 text-sm">search</span>
-      <input className="bg-surface-container-high border border-outline-variant rounded text-on-surface pl-8 pr-3 py-1 h-8 text-xs w-64 focus:border-primary-container focus:ring-0" placeholder="Search..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
+      <input className="bg-surface-container-high border border-outline-variant rounded text-on-surface pl-8 pr-3 py-1 h-8 text-xs w-64 focus:border-primary-container focus:ring-0" placeholder="Search..." type="text" value={search} onChange={handleSearchChange} />
       </div>
       </div>
       <div className="flex items-center gap-3">

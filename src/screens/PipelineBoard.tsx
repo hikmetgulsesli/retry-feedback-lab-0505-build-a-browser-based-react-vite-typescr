@@ -57,7 +57,7 @@ export function PipelineBoard(props: PipelineBoardProps) {
   return (
     <>
       {/* SideNavBar */}
-      <nav className="bg-slate-900 dark:bg-slate-950 font-inter text-xs tracking-tight fixed left-0 top-0 h-full border-r border-slate-700 dark:border-slate-800 w-64 flex flex-col z-40">
+      <nav className="bg-slate-900 dark:bg-slate-950 font-[var(--font-body-sm)] text-xs tracking-tight fixed left-0 top-0 h-full border-r border-slate-700 dark:border-slate-800 w-64 flex flex-col z-40">
       <div className="p-4 border-b border-slate-700 dark:border-slate-800 flex items-center gap-3">
       <div className="w-8 h-8 rounded bg-blue-600/20 flex items-center justify-center text-blue-500">
       <span className="material-symbols-outlined icon-fill">data_usage</span>
@@ -68,22 +68,22 @@ export function PipelineBoard(props: PipelineBoardProps) {
       </div>
       </div>
       <div className="flex-1 py-4 flex flex-col gap-1 overflow-y-auto">
-      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}>
+      <button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}>
       <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'leads' ? 'icon-fill' : ''}`} data-icon="leaderboard">leaderboard</span>
       <span className={page === 'leads' ? 'font-semibold' : ''}>Leads</span>
       </button>
       {/* Pipeline (ACTIVE) */}
-      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}>
+      <button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}>
       <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'pipeline' ? 'icon-fill' : ''}`} data-icon="view_kanban">view_kanban</span>
       <span className={page === 'pipeline' ? 'font-semibold' : ''}>Pipeline</span>
       </button>
       {/* Insights */}
-      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}>
+      <button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}>
       <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'insights' ? 'icon-fill' : ''}`} data-icon="analytics">analytics</span>
       <span className={page === 'insights' ? 'font-semibold' : ''}>Insights</span>
       </button>
       {/* Settings */}
-      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 mt-auto ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}>
+      <button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 mt-auto ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}>
       <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'settings' ? 'icon-fill' : ''}`} data-icon="settings">settings</span>
       <span className={page === 'settings' ? 'font-semibold' : ''}>Settings</span>
       </button>
@@ -92,7 +92,7 @@ export function PipelineBoard(props: PipelineBoardProps) {
       {/* Main Content Area */}
       <div className="flex-1 ml-64 flex flex-col h-full bg-background relative">
       {/* TopNavBar */}
-      <header className="bg-slate-900 dark:bg-slate-950 font-inter text-sm antialiased border-b border-slate-700 dark:border-slate-800 w-full flex justify-between items-center px-4 h-11 shrink-0 z-30">
+      <header className="bg-slate-900 dark:bg-slate-950 font-[var(--font-body-md)] text-sm antialiased border-b border-slate-700 dark:border-slate-800 w-full flex justify-between items-center px-4 h-11 shrink-0 z-30">
       <div className="flex items-center gap-4">
       <span className="text-lg font-bold text-slate-100 tracking-tight">Greenhouse Ops</span>
       <div className="relative flex items-center ml-4">
@@ -125,7 +125,7 @@ export function PipelineBoard(props: PipelineBoardProps) {
       <span className="material-symbols-outlined text-[18px]">filter_list</span>
                               Filter
                           </button>
-      <button onClick={onCreateLead} className="h-touch_target px-lg bg-primary-container text-on-primary-container rounded-DEFAULT font-label-md text-label-md flex items-center gap-xs hover:brightness-110 transition-all">
+      <button onClick={onCreateLead} className="h-touch_target px-lg bg-primary-container text-on-primary-container rounded-DEFAULT font-label-md text-label-md flex items-center gap-xs hover:brightness-110 transition-opacity">
       <span className="material-symbols-outlined text-[18px]">add</span>
                               New Lead
                           </button>
@@ -161,7 +161,7 @@ export function PipelineBoard(props: PipelineBoardProps) {
       </div>
       <div className="flex-1 p-md flex flex-col gap-sm overflow-y-auto">
       {col.tasks.map(task => (
-      <div key={task.id} className="bg-surface-container border border-outline-variant rounded-DEFAULT p-md cursor-grab hover:border-primary-container hover:shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-all group relative">
+      <div key={task.id} className="bg-surface-container border border-outline-variant rounded-DEFAULT p-md cursor-grab hover:border-primary-container hover:shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform group relative">
       <div className="absolute left-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
       <span className="material-symbols-outlined text-outline text-[16px]">drag_indicator</span>
       </div>

@@ -29,7 +29,7 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
   return (
     <>
       {/* SideNavBar (Web Only) */}
-      <nav className="hidden md:flex bg-slate-900 dark:bg-slate-950 text-blue-600 dark:text-blue-500 font-inter text-xs tracking-tight docked h-screen border-r border-slate-700 dark:border-slate-800 w-64 flat no shadows fixed left-0 top-0 flex-col z-40 transition-all duration-150 ease-in-out">
+      <nav className="hidden md:flex bg-slate-900 dark:bg-slate-950 text-blue-600 dark:text-blue-500 font-[var(--font-body-sm)] text-xs tracking-tight docked h-screen border-r border-slate-700 dark:border-slate-800 w-64 flat no shadows fixed left-0 top-0 flex-col z-40 transition-colors duration-150 ease-in-out">
       <div className="px-4 py-6 border-b border-slate-700 dark:border-slate-800 mb-4">
       <div className="text-blue-500 font-black uppercase tracking-widest text-lg mb-1 flex items-center gap-2">
       <img alt="System Logo" className="rounded" data-alt="A small, stylized, high-tech logo suitable for an industrial software interface. It should use clean geometric lines and vibrant blue and emerald tones against a dark slate background, suggesting precision and control." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_3a3WxPSB19AK-0KfdBqaKttJ09udQBYyg7t-4qjf0H1fMrHHBkmYaltmrDSypToja3JlDQiiZJwVSM4FBRqT32s0636oCFmElCcWd9ULsqivRHO5XYxGPvpQj4X6TMVkpifCCIFxuKF1iTJVKIBKHa2VNkjtlbbPjxnzW1lis51KQavUWgbn99AfigtLF2oINsivZpAnjlVMvv0Od3t7tS-YP-eeUoj0I4IBgf4IZNLW_3vcm0i2V5V49maUk8hddviDb9lIuJUB" />
@@ -68,7 +68,7 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       {/* Main Content Canvas */}
       <main className="flex-1 flex flex-col md:ml-64 w-full h-full overflow-hidden bg-background">
       {/* TopNavBar */}
-      <header className="bg-slate-900 dark:bg-slate-950 text-blue-600 dark:text-blue-500 font-inter text-sm antialiased docked full-width top-0 border-b border-slate-700 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-4 h-11 shrink-0 z-30 cursor-pointer active:opacity-80 transition-all duration-150 ease-in-out">
+      <header className="bg-slate-900 dark:bg-slate-950 text-blue-600 dark:text-blue-500 font-[var(--font-body-md)] text-sm antialiased docked full-width top-0 border-b border-slate-700 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-4 h-11 shrink-0 z-30 cursor-pointer active:opacity-80 transition-colors duration-150 ease-in-out">
       <div className="flex items-center gap-4">
       <div className="md:hidden text-lg font-bold text-slate-100 uppercase tracking-widest">Greenhouse Ops</div>
       <div className="hidden md:flex relative h-[32px] w-64 items-center">
@@ -113,20 +113,20 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <span className="material-symbols-outlined text-primary-container">groups</span>
       </div>
       <div className="font-display text-on-surface mt-2 text-[32px]">1,248</div>
-      <div className="flex items-center gap-1 text-[#10B981] font-label-sm mt-1">
+      <div className="flex items-center gap-1 text-tertiary font-label-sm mt-1">
       <span className="material-symbols-outlined text-[14px]">trending_up</span>
       <span>+12.5% vs last month</span>
       </div>
       </div>
       {/* Card 2 */}
       <div className="bg-surface-container rounded-xl border border-outline-variant p-4 flex flex-col gap-2 relative overflow-hidden group">
-      <div className="absolute top-0 right-0 w-24 h-24 bg-[#10B981]/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+      <div className="absolute top-0 right-0 w-24 h-24 bg-tertiary/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
       <div className="flex items-center justify-between">
       <h3 className="font-label-md text-on-surface-variant uppercase tracking-widest">Conversion Rate</h3>
-      <span className="material-symbols-outlined text-[#10B981]">percent</span>
+      <span className="material-symbols-outlined text-tertiary">percent</span>
       </div>
       <div className="font-display text-on-surface mt-2 text-[32px]">4.2%</div>
-      <div className="flex items-center gap-1 text-[#10B981] font-label-sm mt-1">
+      <div className="flex items-center gap-1 text-tertiary font-label-sm mt-1">
       <span className="material-symbols-outlined text-[14px]">trending_up</span>
       <span>+0.8% vs last month</span>
       </div>
@@ -139,7 +139,7 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <span className="material-symbols-outlined text-primary-container">attach_money</span>
       </div>
       <div className="font-display text-on-surface mt-2 text-[32px]">$8.4M</div>
-      <div className="flex items-center gap-1 text-[#10B981] font-label-sm mt-1">
+      <div className="flex items-center gap-1 text-tertiary font-label-sm mt-1">
       <span className="material-symbols-outlined text-[14px]">trending_up</span>
       <span>+2.1M vs last month</span>
       </div>
@@ -161,7 +161,7 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 flex-1 min-h-[400px]">
       {/* Bar Chart: Leads by Source */}
-      <div className="bg-surface-container rounded-xl border border-outline-variant flex flex-col p-4 md:p-6 h-full bg-[radial-gradient(#434655_1px,transparent_1px)] [background-size:16px_16px]">
+      <div className="bg-surface-container rounded-xl border border-outline-variant flex flex-col p-4 md:p-6 h-full bg-[radial-gradient(var(--color-outline-variant)_1px,transparent_1px)] [background-size:16px_16px]">
       <div className="flex items-center justify-between mb-6 pb-4 border-b border-outline-variant">
       <div>
       <h2 className="font-h2 text-on-surface">Leads by Source</h2>
@@ -191,28 +191,28 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       {/* Bars Container */}
       <div className="flex-1 flex items-end justify-around pl-8 h-[calc(100%-32px)] z-10">{/* Bar 1 */}
       <div className="flex flex-col items-center w-full group">
-      <div className="w-10 md:w-14 bg-primary-container rounded-t h-[80%] relative transition-all duration-300 group-hover:brightness-125 shadow-lg shadow-primary-container/20">
+      <div className="w-10 md:w-14 bg-primary-container rounded-t h-[80%] relative transition-colors duration-300 group-hover:brightness-125 shadow-lg shadow-primary-container/20">
       <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-surface-bright text-on-surface font-bold font-mono-data text-[12px] py-1 px-2 rounded pointer-events-none transition-opacity border border-outline-variant">320</div>
       </div>
       <div className="font-bold text-on-surface mt-4 text-[12px] uppercase tracking-wider">Organic</div>
       </div>
       {/* Bar 2 */}
       <div className="flex flex-col items-center w-full group">
-      <div className="w-10 md:w-14 bg-[#10B981] rounded-t h-[65%] relative transition-all duration-300 group-hover:brightness-125 shadow-lg shadow-emerald-500/20">
+      <div className="w-10 md:w-14 bg-tertiary rounded-t h-[65%] relative transition-colors duration-300 group-hover:brightness-125 shadow-lg shadow-tertiary/20">
       <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-surface-bright text-on-surface font-bold font-mono-data text-[12px] py-1 px-2 rounded pointer-events-none transition-opacity border border-outline-variant">260</div>
       </div>
       <div className="font-bold text-on-surface mt-4 text-[12px] uppercase tracking-wider">Direct</div>
       </div>
       {/* Bar 3 */}
       <div className="flex flex-col items-center w-full group">
-      <div className="w-10 md:w-14 bg-secondary-container rounded-t h-[40%] relative transition-all duration-300 group-hover:brightness-125 shadow-lg shadow-secondary-container/20">
+      <div className="w-10 md:w-14 bg-secondary-container rounded-t h-[40%] relative transition-colors duration-300 group-hover:brightness-125 shadow-lg shadow-secondary-container/20">
       <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-surface-bright text-on-surface font-bold font-mono-data text-[12px] py-1 px-2 rounded pointer-events-none transition-opacity border border-outline-variant">160</div>
       </div>
       <div className="font-bold text-on-surface mt-4 text-[12px] uppercase tracking-wider">Referral</div>
       </div>
       {/* Bar 4 */}
       <div className="flex flex-col items-center w-full group">
-      <div className="w-10 md:w-14 bg-outline rounded-t h-[20%] relative transition-all duration-300 group-hover:brightness-125 shadow-lg shadow-outline/20">
+      <div className="w-10 md:w-14 bg-outline rounded-t h-[20%] relative transition-colors duration-300 group-hover:brightness-125 shadow-lg shadow-outline/20">
       <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-surface-bright text-on-surface font-bold font-mono-data text-[12px] py-1 px-2 rounded pointer-events-none transition-opacity border border-outline-variant">80</div>
       </div>
       <div className="font-bold text-on-surface mt-4 text-[12px] uppercase tracking-wider">Social</div>
@@ -220,14 +220,14 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       </div>
       </div>
       {/* Line Chart: Won vs Lost Trend */}
-      <div className="bg-surface-container rounded-xl border border-outline-variant flex flex-col p-4 md:p-6 h-full relative overflow-hidden bg-[radial-gradient(#434655_1px,transparent_1px)] [background-size:16px_16px]">
+      <div className="bg-surface-container rounded-xl border border-outline-variant flex flex-col p-4 md:p-6 h-full relative overflow-hidden bg-[radial-gradient(var(--color-outline-variant)_1px,transparent_1px)] [background-size:16px_16px]">
       <div className="flex items-center justify-between mb-6 pb-4 border-b border-outline-variant z-10 relative">
       <div>
       <h2 className="font-h2 text-on-surface">Won vs Lost</h2>
       <p className="font-body-sm text-on-surface-variant mt-1">Weekly outcome trajectory</p>
       </div>
       <div className="flex gap-4"><div className="flex items-center gap-2">
-      <div className="w-3 h-3 rounded-full bg-[#10B981]"></div>
+      <div className="w-3 h-3 rounded-full bg-tertiary"></div>
       <span className="font-label-sm text-on-surface uppercase">Won</span>
       </div>
       <div className="flex items-center gap-2">
@@ -256,7 +256,7 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <svg className="w-full h-full absolute inset-0 left-8 pr-4" preserveAspectRatio="none" viewBox="0 0 100 100">
       <defs>
       <linearGradient id="wonGradient" x1="0%" x2="100%" y1="0%" y2="0%">
-      <stop offset="0%" stopColor="#10B981"></stop>
+      <stop offset="0%" stopColor="var(--color-tertiary)"></stop>
       <stop offset="100%" stopColor="#34D399"></stop>
       </linearGradient>
       <linearGradient id="lostGradient" x1="0%" x2="100%" y1="0%" y2="0%">
@@ -269,10 +269,10 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       {/* Lost Line (Blue Gradient - Replaces Red per 'vibrant blue' request) */}
       <path d="M0,40 Q20,60 40,65 T80,55 T100,70" fill="none" stroke="url(#lostGradient)" strokeDasharray="4" strokeWidth="3" vector-effect="non-scaling-stroke"></path>
       {/* Data Points */}
-      <circle cx="0" cy="80" fill="#10B981" r="3" vector-effect="non-scaling-stroke"></circle>
-      <circle cx="40" cy="50" fill="#10B981" r="3" vector-effect="non-scaling-stroke"></circle>
-      <circle cx="80" cy="30" fill="#10B981" r="3" vector-effect="non-scaling-stroke"></circle>
-      <circle cx="100" cy="10" fill="#10B981" r="3" vector-effect="non-scaling-stroke"></circle>
+      <circle cx="0" cy="80" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
+      <circle cx="40" cy="50" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
+      <circle cx="80" cy="30" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
+      <circle cx="100" cy="10" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
       </svg>
       {/* X-Axis Labels */}
       <div className="absolute bottom-0 left-8 right-0 flex justify-between text-on-surface font-semibold font-mono-data text-[11px] pt-3 pr-4">

@@ -52,22 +52,22 @@ export function Settings(props: SettingsProps) {
   return (
     <>
       {/* SideNavBar */}
-      <nav className="fixed left-0 top-0 h-full flex flex-col z-40 bg-slate-900 dark:bg-slate-950 border-r border-slate-700 dark:border-slate-800 w-64 font-inter text-xs tracking-tight">
+      <nav className="fixed left-0 top-0 h-full flex flex-col z-40 bg-slate-900 dark:bg-slate-950 border-r border-slate-700 dark:border-slate-800 w-64 font-[var(--font-body-sm)] text-xs tracking-tight">
       <div className="p-4 border-b border-slate-700 dark:border-slate-800 mb-4">
       <h2 className="text-blue-500 font-black uppercase tracking-widest text-xs mb-1">Maintenance Console</h2>
       <p className="text-slate-400 text-[10px]">v2.4.0 High-Density</p>
       </div>
       <ul className="flex-1 flex flex-col gap-1">
-      <li><button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="leaderboard">leaderboard</span> Leads</button></li>
-      <li><button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="view_kanban">view_kanban</span> Pipeline</button></li>
-      <li><button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="analytics">analytics</span> Insights</button></li>
-      <li><button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="settings" style={{fontVariationSettings: "'FILL' 1"}}>settings</span> Settings</button></li>
+      <li><button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="leaderboard">leaderboard</span> Leads</button></li>
+      <li><button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="view_kanban">view_kanban</span> Pipeline</button></li>
+      <li><button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="analytics">analytics</span> Insights</button></li>
+      <li><button className={`flex items-center px-4 py-2 transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="settings" style={{fontVariationSettings: "'FILL' 1"}}>settings</span> Settings</button></li>
       </ul>
       </nav>
       {/* Main Content Area */}
       <div className="ml-64 flex-1 flex flex-col min-h-screen">
       {/* TopNavBar */}
-      <header className="fixed top-0 w-[calc(100%-16rem)] flex justify-between items-center px-4 h-11 z-30 bg-slate-900 dark:bg-slate-950 border-b border-slate-700 dark:border-slate-800 font-inter text-sm antialiased text-blue-600 dark:text-blue-500">
+      <header className="fixed top-0 w-[calc(100%-16rem)] flex justify-between items-center px-4 h-11 z-30 bg-slate-900 dark:bg-slate-950 border-b border-slate-700 dark:border-slate-800 font-[var(--font-body-md)] text-sm antialiased text-blue-600 dark:text-blue-500">
       <div className="flex items-center gap-4">
       <span className="text-lg font-bold text-slate-100">Greenhouse Ops</span>
       <div className="relative flex items-center ml-8">
@@ -140,7 +140,7 @@ export function Settings(props: SettingsProps) {
       </div>
       <label className="relative inline-flex items-center cursor-pointer">
       <input checked={emailAlerts} onChange={handleEmailToggle} className="sr-only peer" type="checkbox" value="" />
-      <div className="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-on-primary-container after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container border border-outline-variant"></div>
+      <div className="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-on-primary-container after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-transform peer-checked:bg-primary-container border border-outline-variant"></div>
       </label>
       </div>
       </section>

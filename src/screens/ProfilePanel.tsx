@@ -20,7 +20,7 @@ export function ProfilePanel(props: ProfilePanelProps) {
       {/* Main Content Area (Background) */}
       <div className="flex-1 flex flex-col relative overflow-hidden">
       {/* TopNavBar (Simulated Background) */}
-      <header className="bg-slate-900 dark:bg-slate-950 font-inter text-sm antialiased docked full-width top-0 border-b border-slate-700 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-4 h-11 z-10 hidden md:flex">
+      <header className="bg-slate-900 dark:bg-slate-950 font-[var(--font-body-md)] text-sm antialiased docked full-width top-0 border-b border-slate-700 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-4 h-11 z-10 hidden md:flex">
       <div className="flex items-center gap-4">
       <span className="text-lg font-bold text-slate-100">Greenhouse Ops</span>
       </div>

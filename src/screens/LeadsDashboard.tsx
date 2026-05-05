@@ -92,19 +92,19 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       </div>
       </div>
       <div className="flex-1 py-md flex flex-col gap-xs overflow-y-auto">
-      <button className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}>
+      <button className={`flex items-center px-4 py-2 font-[var(--font-body-sm)] text-xs tracking-tight transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}>
       <span className="material-symbols-outlined mr-md">leaderboard</span>
       <span className="font-label-md text-label-md">Leads</span>
       </button>
-      <button className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}>
+      <button className={`flex items-center px-4 py-2 font-[var(--font-body-sm)] text-xs tracking-tight transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}>
       <span className="material-symbols-outlined mr-md">view_kanban</span>
       <span className="font-label-md text-label-md">Pipeline</span>
       </button>
-      <button className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}>
+      <button className={`flex items-center px-4 py-2 font-[var(--font-body-sm)] text-xs tracking-tight transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}>
       <span className="material-symbols-outlined mr-md">analytics</span>
       <span className="font-label-md text-label-md">Insights</span>
       </button>
-      <button className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}>
+      <button className={`flex items-center px-4 py-2 font-[var(--font-body-sm)] text-xs tracking-tight transition-colors duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}>
       <span className="material-symbols-outlined mr-md">settings</span>
       <span className="font-label-md text-label-md">Settings</span>
       </button>
@@ -113,7 +113,7 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col md:ml-64 w-full h-full overflow-hidden">
       {/* TopNavBar */}
-      <header className="bg-slate-900 dark:bg-slate-950 font-inter text-sm antialiased docked full-width top-0 border-b border-slate-700 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-4 h-11 shrink-0 z-30">
+      <header className="bg-slate-900 dark:bg-slate-950 font-[var(--font-body-md)] text-sm antialiased docked full-width top-0 border-b border-slate-700 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-4 h-11 shrink-0 z-30">
       <div className="flex items-center">
       {/* Search bar on left logic per JSON, but leaving space for potential brand logo if mobile */}
       <div className="md:hidden text-lg font-bold text-slate-100 mr-4">Greenhouse Ops</div>

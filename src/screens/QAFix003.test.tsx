@@ -48,7 +48,7 @@ describe('QA-FIX-003 Runtime Fixes', () => {
     }));
 
     render(<App />);
-    const accountBtn = screen.getByLabelText('Account');
+    const accountBtn = screen.getAllByLabelText('Account')[0];
     fireEvent.click(accountBtn);
 
     expect(screen.getByRole('heading', { name: /Profile/i })).toBeInTheDocument();

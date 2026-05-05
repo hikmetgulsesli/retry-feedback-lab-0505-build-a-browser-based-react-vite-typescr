@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lead Create/Edit Form - Greenhouse Ops</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#111c2d",
+                        "on-secondary": "#263143",
+                        "surface-bright": "#373942",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-primary": "#0053db",
+                        "secondary-fixed": "#d8e3fb",
+                        "on-primary-fixed": "#00174b",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-low": "#191b23",
+                        "on-surface": "#e1e2ed",
+                        "surface-container": "#1d1f27",
+                        "tertiary-fixed": "#ffdbcd",
+                        "primary": "#b4c5ff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-tertiary": "#581e00",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-background": "#e1e2ed",
+                        "inverse-surface": "#e1e2ed",
+                        "background": "#11131b",
+                        "outline": "#8d90a0",
+                        "outline-variant": "#434655",
+                        "surface": "#11131b",
+                        "error": "#ffb4ab",
+                        "primary-container": "#2563eb",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "secondary-container": "#3e495d",
+                        "surface-variant": "#32343d",
+                        "surface-tint": "#b4c5ff",
+                        "surface-dim": "#11131b",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#282a32",
+                        "inverse-on-surface": "#2e3039",
+                        "on-primary": "#002a78",
+                        "tertiary": "#ffb596",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-container": "#aeb9d0",
+                        "on-tertiary-container": "#ffede6",
+                        "tertiary-container": "#bc4800",
+                        "secondary": "#bcc7de",
+                        "surface-container-lowest": "#0c0e16",
+                        "surface-container-highest": "#32343d",
+                        "on-surface-variant": "#c3c6d7",
+                        "on-tertiary-fixed": "#360f00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "touch_target": "44px",
+                        "margin": "24px",
+                        "xs": "4px",
+                        "lg": "16px",
+                        "md": "12px",
+                        "xl": "24px",
+                        "gutter": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "mono-data": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "h2": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "h1": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "mono-data": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex items-center justify-center p-4">
+<!-- Modal Container -->
+<div class="bg-surface-container w-full max-w-2xl rounded-xl shadow-[0px_4px_12px_rgba(0,0,0,0.5)] border border-outline-variant flex flex-col overflow-hidden">
+<!-- Header -->
+<div class="px-xl py-lg border-b border-outline-variant flex items-center justify-between bg-surface-container-high">
+<div>
+<h2 class="font-h1 text-h1 text-on-surface">New Lead Profile</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Enter prospect details for pipeline tracking.</p>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container rounded-DEFAULT p-1" type="button">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+</div>
+<!-- Form Body -->
+<div class="p-xl flex-1 overflow-y-auto">
+<form class="space-y-xl">
+<!-- Section: Primary Info -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Full Name -->
+<div class="space-y-sm">
+<label class="block font-label-md text-label-md text-on-surface" for="fullName">Full Name <span class="text-error">*</span></label>
+<input class="w-full bg-surface-variant border border-outline-variant rounded-DEFAULT h-touch_target px-md font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="fullName" name="fullName" placeholder="Jane Doe" required="" type="text"/>
+</div>
+<!-- Company Name -->
+<div class="space-y-sm">
+<label class="block font-label-md text-label-md text-on-surface" for="companyName">Company Name</label>
+<input class="w-full bg-surface-variant border border-outline-variant rounded-DEFAULT h-touch_target px-md font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="companyName" name="companyName" placeholder="Acme Corp" type="text"/>
+</div>
+</div>
+<!-- Section: Qualification -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Lead Source -->
+<div class="space-y-sm">
+<label class="block font-label-md text-label-md text-on-surface" for="leadSource">Lead Source</label>
+<div class="relative">
+<select class="w-full bg-surface-variant border border-outline-variant rounded-DEFAULT h-touch_target pl-md pr-10 font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none cursor-pointer" id="leadSource" name="leadSource">
+<option disabled="" selected="" value="">Select Source</option>
+<option value="website">Website Inquiry</option>
+<option value="referral">Referral</option>
+<option value="trade_show">Trade Show</option>
+<option value="cold_outreach">Cold Outreach</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Estimated Value -->
+<div class="space-y-sm">
+<label class="block font-label-md text-label-md text-on-surface" for="estimatedValue">Estimated Value ($)</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-mono-data text-mono-data">$</span>
+<input class="w-full bg-surface-variant border border-outline-variant rounded-DEFAULT h-touch_target pl-8 pr-md font-mono-data text-mono-data text-on-surface placeholder:text-on-surface-variant/50 focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors text-right" id="estimatedValue" name="estimatedValue" placeholder="0.00" type="number"/>
+</div>
+</div>
+<!-- Status -->
+<div class="space-y-sm">
+<label class="block font-label-md text-label-md text-on-surface" for="status">Status</label>
+<div class="relative">
+<select class="w-full bg-surface-variant border border-outline-variant rounded-DEFAULT h-touch_target pl-md pr-10 font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none cursor-pointer" id="status" name="status">
+<option selected="" value="new">New</option>
+<option value="contacted">Contacted</option>
+<option value="qualified">Qualified</option>
+<option value="proposal">Proposal Sent</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Section: Timeline -->
+<div class="space-y-sm w-full md:w-1/2">
+<label class="block font-label-md text-label-md text-on-surface" for="nextActionDate">Next Action Date</label>
+<div class="relative">
+<input class="w-full bg-surface-variant border border-outline-variant rounded-DEFAULT h-touch_target pl-md pr-10 font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none cursor-pointer [color-scheme:dark]" id="nextActionDate" name="nextActionDate" type="date"/>
+</div>
+</div>
+</form>
+</div>
+<!-- Footer Actions -->
+<div class="px-xl py-lg border-t border-outline-variant bg-surface-container-low flex justify-end gap-md">
+<button class="h-touch_target px-lg border border-outline-variant text-on-surface font-label-md text-label-md rounded-DEFAULT hover:bg-surface-variant transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container-low flex items-center justify-center" type="button">
+                Cancel
+            </button>
+<button class="h-touch_target px-lg bg-primary-container text-on-primary-container font-label-md text-label-md rounded-DEFAULT hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container-low flex items-center justify-center gap-sm" type="submit">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">save</span>
+                Save Lead
+            </button>
+</div>
+</div>
+</body></html>

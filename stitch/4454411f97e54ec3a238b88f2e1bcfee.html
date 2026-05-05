@@ -1,0 +1,26 @@
+# Greenhouse Maintenance Operations Console - PRD (retry-feedback-lab-0505)
+
+## Overview
+Build a browser-based React/Vite TypeScript operations console for tracking greenhouse maintenance tasks.
+
+## Goals
+- Working first-load experience with populated, empty, loading, and error states.
+- Functional controls (buttons, filters, state changes).
+- LocalStorage persistence with error handling.
+- Deterministic state for smoke testing (window.app).
+
+## Screens to Generate
+1. **Leads (Dashboard)**: Lead list, search, filtering, quick status actions.
+2. **Lead Create/Edit (Form)**: Name, company, source, value, status, next action.
+3. **Pipeline (Board)**: Status columns with lead counts and value totals.
+4. **Insights (Dashboard)**: Total leads, won/lost counts, weekly follow-up, conversion metrics.
+5. **Settings (Settings)**: Density, currency, reminder, and persistence preferences.
+6. **Profile Panel (Panel)**: User name, timezone, notification toggles.
+7. **Storage Error State (Error)**: Save error, retry, and local data reset actions.
+8. **Empty State (Empty)**: No-lead explanation with create-lead CTA.
+
+## Visual Direction
+- **Aesthetic**: Corporate/minimal, modern dark theme.
+- **Palette**: Primary #2563EB, Secondary #475569, Background #F8FAFC (User requested dark, PRD says #F8FAFC, I will prioritize the "dark, modern theme" instruction from the end of the prompt for the actual design).
+- **Typography**: Inter / system sans.
+- **Components**: 8px radius, clear focus rings, 44px touch targets.

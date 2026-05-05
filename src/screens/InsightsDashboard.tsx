@@ -241,14 +241,14 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       {/* Lines */}
       <svg className="w-full h-full absolute inset-0 left-8 pr-4" preserveAspectRatio="none" viewBox="0 0 100 100">
       <defs>
-      <lineargradient id="wonGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+      <linearGradient id="wonGradient" x1="0%" x2="100%" y1="0%" y2="0%">
       <stop offset="0%" stopColor="#10B981"></stop>
       <stop offset="100%" stopColor="#34D399"></stop>
-      </lineargradient>
-      <lineargradient id="lostGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+      </linearGradient>
+      <linearGradient id="lostGradient" x1="0%" x2="100%" y1="0%" y2="0%">
       <stop offset="0%" stopColor="#2563eb"></stop>
       <stop offset="100%" stopColor="#60a5fa"></stop>
-      </lineargradient>
+      </linearGradient>
       </defs>
       {/* Won Line (Emerald Gradient) */}
       <path d="M0,80 Q20,70 40,50 T80,30 T100,10" fill="none" stroke="url(#wonGradient)" strokeWidth="3" vector-effect="non-scaling-stroke"></path>

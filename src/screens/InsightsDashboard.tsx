@@ -111,10 +111,10 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       </div>
       </div>
       <div className="flex items-center gap-2">
-      <button aria-label="Notifications" className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded">
+      <button aria-label="Notifications" aria-disabled="true" className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded">
       <span className="material-symbols-outlined text-lg">notifications</span>
       </button>
-      <button aria-label="Help" className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded">
+      <button aria-label="Help" aria-disabled="true" className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded">
       <span className="material-symbols-outlined text-lg">help_outline</span>
       </button>
       <button aria-label="Account" onClick={onOpenProfile} className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded overflow-hidden">
@@ -127,11 +127,20 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <div className="flex items-center justify-between shrink-0 mb-2">
       <h1 className="font-h1 text-on-surface">Analytics Overview</h1>
       <div className="flex gap-2">
-      <button className="h-[40px] px-4 border border-outline-variant rounded text-on-surface font-label-md hover:border-primary-container transition-colors flex items-center gap-2 bg-surface-container">
+      <button onClick={() => alert('Date range filter: Last 30 Days')} className="h-[40px] px-4 border border-outline-variant rounded text-on-surface font-label-md hover:border-primary-container transition-colors flex items-center gap-2 bg-surface-container">
       <span className="material-symbols-outlined text-sm">calendar_today</span>
                               Last 30 Days
                           </button>
-      <button className="h-[40px] px-4 bg-primary-container text-white font-label-md rounded hover:opacity-90 transition-opacity flex items-center gap-2">
+      <button onClick={() => {
+                            const csv = state.tasks.map(t => `${t.id},${t.title},${t.company},${t.status},${t.value}`).join('\n');
+                            const blob = new Blob([csv], { type: 'text/csv' });
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = 'leads-export.csv';
+                            a.click();
+                            URL.revokeObjectURL(url);
+                          }} className="h-[40px] px-4 bg-primary-container text-white font-label-md rounded hover:opacity-90 transition-opacity flex items-center gap-2">
       <span className="material-symbols-outlined text-sm">download</span>
                               Export
                           </button>
@@ -201,7 +210,7 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <h2 className="font-h2 text-on-surface">Leads by Source</h2>
       <p className="font-body-sm text-on-surface-variant mt-1">Distribution across primary channels</p>
       </div>
-      <button className="h-[32px] w-[32px] flex items-center justify-center text-on-surface-variant hover:text-on-surface rounded">
+      <button aria-label="More options" aria-disabled="true" className="h-[32px] w-[32px] flex items-center justify-center text-on-surface-variant hover:text-on-surface rounded">
       <span className="material-symbols-outlined">more_vert</span>
       </button>
       </div>

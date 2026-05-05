@@ -8,6 +8,7 @@
 // 4. Replace placeholder data with props/state
 
 import { useState, useMemo } from "react";
+import type { Task } from "../types/domain";
 import { useAppContext } from "../hooks/useAppState";
 
 interface PipelineBoardProps {
@@ -19,6 +20,7 @@ export function PipelineBoard(props: PipelineBoardProps) {
   const { state, actions } = useAppContext();
   const { onCreateLead, onOpenProfile } = props;
   const [search, setSearch] = useState(state.searchQuery);
+  const [valueFilter, setValueFilter] = useState(false);
 
   const nav = (page: string) => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -27,17 +29,41 @@ export function PipelineBoard(props: PipelineBoardProps) {
 
   const page = state.currentPage;
 
+  const filteredTasks = useMemo(() => {
+    let tasks = state.tasks;
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      tasks = tasks.filter(t =>
+        t.title.toLowerCase().includes(q) ||
+        t.company.toLowerCase().includes(q) ||
+        t.contactName.toLowerCase().includes(q) ||
+        t.equipment.toLowerCase().includes(q)
+      );
+    }
+    if (valueFilter) {
+      tasks = tasks.filter(t => t.value > 50000);
+    }
+    return tasks;
+  }, [state.tasks, search, valueFilter]);
+
   const columns = useMemo(() => {
     const statuses = ['new', 'contacted', 'proposal', 'negotiating', 'closed'] as const;
     return statuses.map(status => ({
       status,
-      tasks: state.tasks.filter(t => t.status === status),
+      tasks: filteredTasks.filter(t => t.status === status),
     }));
-  }, [state.tasks]);
+  }, [filteredTasks]);
 
   const totalValue = useMemo(() =>
-    state.tasks.reduce((sum, t) => sum + t.value, 0),
-  [state.tasks]);
+    filteredTasks.reduce((sum, t) => sum + t.value, 0),
+  [filteredTasks]);
+
+  const advanceStatus = (taskId: string, currentStatus: string) => {
+    const order = ['new', 'contacted', 'proposal', 'negotiating', 'closed'];
+    const idx = order.indexOf(currentStatus);
+    const next = idx >= 0 && idx < order.length - 1 ? order[idx + 1] : currentStatus;
+    actions.updateTask(taskId, { status: next as Task['status'] });
+  };
 
   const sourceIcon = (source: string) => {
     const map: Record<string, string> = {
@@ -118,12 +144,12 @@ export function PipelineBoard(props: PipelineBoardProps) {
       <div className="flex justify-between items-end mb-margin shrink-0">
       <div>
       <h1 className="font-display text-display text-on-background">Pipeline</h1>
-      <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Total Pipeline Value: <span className="font-mono-data text-primary ml-1">${(totalValue / 1000).toFixed(0)}K</span> ({state.tasks.length} Active Leads)</p>
+      <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Total Pipeline Value: <span className="font-mono-data text-primary ml-1">${(totalValue / 1000).toFixed(0)}K</span> ({filteredTasks.length} Active Leads{valueFilter ? ' — High Value' : ''})</p>
       </div>
       <div className="flex gap-md">
-      <button className="h-touch_target px-lg border border-outline-variant rounded-DEFAULT text-on-surface font-label-md text-label-md flex items-center gap-xs hover:border-primary hover:text-primary transition-colors">
+      <button onClick={() => setValueFilter(v => !v)} className={`h-touch_target px-lg border border-outline-variant rounded-DEFAULT text-on-surface font-label-md text-label-md flex items-center gap-xs hover:border-primary hover:text-primary transition-colors ${valueFilter ? 'bg-primary-container/10 border-primary text-primary' : ''}`}>
       <span className="material-symbols-outlined text-[18px]">filter_list</span>
-                              Filter
+                              {valueFilter ? 'Show All' : 'Filter'}
                           </button>
       <button onClick={onCreateLead} className="h-touch_target px-lg bg-primary-container text-on-primary-container rounded-DEFAULT font-label-md text-label-md flex items-center gap-xs hover:brightness-110 transition-opacity">
       <span className="material-symbols-outlined text-[18px]">add</span>
@@ -161,7 +187,7 @@ export function PipelineBoard(props: PipelineBoardProps) {
       </div>
       <div className="flex-1 p-md flex flex-col gap-sm overflow-y-auto">
       {col.tasks.map(task => (
-      <div key={task.id} className="bg-surface-container border border-outline-variant rounded-DEFAULT p-md cursor-grab hover:border-primary-container hover:shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform group relative">
+      <div key={task.id} onClick={() => advanceStatus(task.id, task.status)} className="bg-surface-container border border-outline-variant rounded-DEFAULT p-md cursor-pointer hover:border-primary-container hover:shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform group relative">
       <div className="absolute left-1 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
       <span className="material-symbols-outlined text-outline text-[16px]">drag_indicator</span>
       </div>
@@ -187,7 +213,7 @@ export function PipelineBoard(props: PipelineBoardProps) {
         );
       })}
       {/* Empty Column State / Add Column */}
-      <div className="flex flex-col w-[320px] shrink-0 border border-dashed border-outline-variant/50 rounded-lg bg-surface-container-lowest/50 hover:bg-surface-container-lowest transition-colors cursor-pointer flex items-center justify-center group">
+      <div onClick={onCreateLead} className="flex flex-col w-[320px] shrink-0 border border-dashed border-outline-variant/50 rounded-lg bg-surface-container-lowest/50 hover:bg-surface-container-lowest transition-colors cursor-pointer flex items-center justify-center group">
       <span className="material-symbols-outlined text-[32px] text-outline group-hover:text-primary transition-colors">add_circle</span>
       <span className="font-label-md text-label-md text-outline mt-2 group-hover:text-primary transition-colors">Add Stage</span>
       </div>

@@ -10,10 +10,13 @@
 import { useState } from "react";
 import { useAppContext } from "../hooks/useAppState";
 
-interface InsightsDashboardProps {}
+interface InsightsDashboardProps {
+  onOpenProfile?: () => void;
+}
 
 export function InsightsDashboard(props: InsightsDashboardProps) {
   const { state, actions } = useAppContext();
+  const { onOpenProfile } = props;
   const [search, setSearch] = useState(state.searchQuery);
 
   const nav = (page: string) => (e: React.MouseEvent) => {
@@ -37,28 +40,28 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       </div>
       <ul className="flex flex-col gap-1 w-full">
       <li>
-      <a className={`flex items-center px-4 py-2 h-[44px] ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('leads')}>
+      <button className={`flex items-center px-4 py-2 h-[44px] ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}>
       <span className="material-symbols-outlined mr-3 text-lg">leaderboard</span>
       <span className="font-label-md">Leads</span>
-      </a>
+      </button>
       </li>
       <li>
-      <a className={`flex items-center px-4 py-2 h-[44px] ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('pipeline')}>
+      <button className={`flex items-center px-4 py-2 h-[44px] ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}>
       <span className="material-symbols-outlined mr-3 text-lg">view_kanban</span>
       <span className="font-label-md">Pipeline</span>
-      </a>
+      </button>
       </li>
       <li>
-      <a className={`flex items-center px-4 py-2 h-[44px] ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('insights')}>
+      <button className={`flex items-center px-4 py-2 h-[44px] ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}>
       <span className="material-symbols-outlined mr-3 text-lg">analytics</span>
       <span className="font-label-md">Insights</span>
-      </a>
+      </button>
       </li>
       <li>
-      <a className={`flex items-center px-4 py-2 h-[44px] ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('settings')}>
+      <button className={`flex items-center px-4 py-2 h-[44px] ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}>
       <span className="material-symbols-outlined mr-3 text-lg">settings</span>
       <span className="font-label-md">Settings</span>
-      </a>
+      </button>
       </li>
       </ul>
       </nav>
@@ -80,7 +83,7 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <button className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded">
       <span className="material-symbols-outlined text-lg">help_outline</span>
       </button>
-      <button className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded overflow-hidden">
+      <button onClick={onOpenProfile} className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded overflow-hidden">
       <img alt="User profile" className="w-full h-full object-cover" data-alt="A highly detailed close-up portrait photo of an industrial control room operator. The lighting is cinematic, characterized by cool blue and soft green glows reflecting off unseen monitors, enhancing the technical, dark-mode aesthetic of the application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkvdNvLq1gkeq5WfwH820tkEgkYGN9jR9-RxJLZlTV73WFZWcFYBZOZm48LC9iPPfTYFjUCY_Kr7fe7Uc5K0YyN5UKo9TCaqreDXNMyBj3f71HCcPTd8vlO52CAzH8gTPgWjS5R1OID3PnbXKaAfSWZkgerlRn8EmOnYUytN047zUSo2EOUDFxSLAg_VMbOT2Pcev_rF8blJGGjE--GMY12h8VDi8RJm7ma9p2vsPTrNyL-YNcrGMSIyKh-kIIQGlymXSbTXBIhY6Z" />
       </button>
       </div>

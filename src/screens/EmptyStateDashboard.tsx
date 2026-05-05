@@ -67,22 +67,22 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       <p className="text-slate-500 text-[10px] mt-0.5 uppercase tracking-wider">v2.4.0 High-Density</p>
       </div>
       <div className="flex flex-col gap-1 px-2">
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} href="#" onClick={nav('leads')}>
+      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} onClick={nav('leads')}>
       <span className="material-symbols-outlined mr-3 text-[18px]">leaderboard</span>
       <span className={`font-medium text-[13px] ${page === 'leads' ? '' : ''}`}>Leads</span>
-      </a>
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} href="#" onClick={nav('pipeline')}>
+      </button>
+      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} onClick={nav('pipeline')}>
       <span className="material-symbols-outlined mr-3 text-[18px]">view_kanban</span>
       <span className="font-medium text-[13px]">Pipeline</span>
-      </a>
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} href="#" onClick={nav('insights')}>
+      </button>
+      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} onClick={nav('insights')}>
       <span className="material-symbols-outlined mr-3 text-[18px]">analytics</span>
       <span className="font-medium text-[13px]">Insights</span>
-      </a>
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} href="#" onClick={nav('settings')}>
+      </button>
+      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 rounded-sm'}`} onClick={nav('settings')}>
       <span className="material-symbols-outlined mr-3 text-[18px]">settings</span>
       <span className="font-medium text-[13px]">Settings</span>
-      </a>
+      </button>
       </div>
       </nav>
       {/* Main Content Area */}
@@ -124,30 +124,30 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       </div>
       {/* BottomNavBar (Mobile) */}
       <nav className="md:hidden fixed bottom-0 w-full bg-slate-900 dark:bg-slate-950 border-t border-slate-700 dark:border-slate-800 flex justify-around items-center h-[60px] z-50 px-2 pb-safe">
-      <a className={`flex flex-col items-center justify-center w-full h-full ${page === 'leads' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} href="#" onClick={nav('leads')}>
+      <button className={`flex flex-col items-center justify-center w-full h-full ${page === 'leads' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} onClick={nav('leads')}>
       <div className={`px-4 py-1 rounded-full mb-1 ${page === 'leads' ? 'bg-blue-600/10' : ''}`}>
       <span className="material-symbols-outlined text-[20px]" style={{fontVariationSettings: page === 'leads' ? "'FILL' 1" : "'FILL' 0"}}>leaderboard</span>
       </div>
       <span className="font-inter text-[10px] font-medium">Leads</span>
-      </a>
-      <a className={`flex flex-col items-center justify-center w-full h-full ${page === 'pipeline' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} href="#" onClick={nav('pipeline')}>
+      </button>
+      <button className={`flex flex-col items-center justify-center w-full h-full ${page === 'pipeline' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} onClick={nav('pipeline')}>
       <div className={`px-4 py-1 rounded-full mb-1 ${page === 'pipeline' ? 'bg-blue-600/10' : ''}`}>
       <span className="material-symbols-outlined text-[20px]">view_kanban</span>
       </div>
       <span className="font-inter text-[10px] font-medium">Pipeline</span>
-      </a>
-      <a className={`flex flex-col items-center justify-center w-full h-full ${page === 'insights' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} href="#" onClick={nav('insights')}>
+      </button>
+      <button className={`flex flex-col items-center justify-center w-full h-full ${page === 'insights' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} onClick={nav('insights')}>
       <div className={`px-4 py-1 rounded-full mb-1 ${page === 'insights' ? 'bg-blue-600/10' : ''}`}>
       <span className="material-symbols-outlined text-[20px]">analytics</span>
       </div>
       <span className="font-inter text-[10px] font-medium">Insights</span>
-      </a>
-      <a className={`flex flex-col items-center justify-center w-full h-full ${page === 'settings' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} href="#" onClick={nav('settings')}>
+      </button>
+      <button className={`flex flex-col items-center justify-center w-full h-full ${page === 'settings' ? 'text-blue-500' : 'text-slate-400 hover:text-slate-300'}`} onClick={nav('settings')}>
       <div className={`px-4 py-1 rounded-full mb-1 ${page === 'settings' ? 'bg-blue-600/10' : ''}`}>
       <span className="material-symbols-outlined text-[20px]">settings</span>
       </div>
       <span className="font-inter text-[10px] font-medium">Settings</span>
-      </a>
+      </button>
       </nav>
     </>
   );

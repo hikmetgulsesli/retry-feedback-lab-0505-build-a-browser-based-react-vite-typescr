@@ -9,9 +9,12 @@
 
 import { useState } from "react";
 
-interface ProfilePanelProps {}
+interface ProfilePanelProps {
+  onClose: () => void;
+}
 
 export function ProfilePanel(props: ProfilePanelProps) {
+  const { onClose } = props;
   return (
     <>
       {/* Main Content Area (Background) */}
@@ -52,7 +55,7 @@ export function ProfilePanel(props: ProfilePanelProps) {
       {/* Header */}
       <div className="flex items-center justify-between p-lg border-b border-outline-variant shrink-0">
       <h2 className="font-h2 text-h2 text-on-surface">Profile</h2>
-      <button className="h-touch_target w-touch_target flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded transition-colors -mr-2">
+      <button onClick={onClose} className="h-touch_target w-touch_target flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded transition-colors -mr-2">
       <span className="material-symbols-outlined text-[20px]">close</span>
       </button>
       </div>

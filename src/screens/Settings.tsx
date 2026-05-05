@@ -10,10 +10,13 @@
 import { useState } from "react";
 import { useAppContext } from "../hooks/useAppState";
 
-interface SettingsProps {}
+interface SettingsProps {
+  onOpenProfile?: () => void;
+}
 
 export function Settings(props: SettingsProps) {
   const { state, actions } = useAppContext();
+  const { onOpenProfile } = props;
   const [density, setDensity] = useState(state.settings.density);
   const [currency, setCurrency] = useState(state.settings.currency);
   const [emailAlerts, setEmailAlerts] = useState(state.settings.emailAlerts);
@@ -55,10 +58,10 @@ export function Settings(props: SettingsProps) {
       <p className="text-slate-400 text-[10px]">v2.4.0 High-Density</p>
       </div>
       <ul className="flex-1 flex flex-col gap-1">
-      <li><a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('leads')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="leaderboard">leaderboard</span> Leads</a></li>
-      <li><a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('pipeline')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="view_kanban">view_kanban</span> Pipeline</a></li>
-      <li><a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('insights')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="analytics">analytics</span> Insights</a></li>
-      <li><a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('settings')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="settings" style={{fontVariationSettings: "'FILL' 1"}}>settings</span> Settings</a></li>
+      <li><button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="leaderboard">leaderboard</span> Leads</button></li>
+      <li><button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="view_kanban">view_kanban</span> Pipeline</button></li>
+      <li><button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="analytics">analytics</span> Insights</button></li>
+      <li><button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="settings" style={{fontVariationSettings: "'FILL' 1"}}>settings</span> Settings</button></li>
       </ul>
       </nav>
       {/* Main Content Area */}
@@ -73,9 +76,9 @@ export function Settings(props: SettingsProps) {
       </div>
       </div>
       <div className="flex items-center gap-3">
-      <button className="text-slate-400 hover:text-slate-100 transition-colors"><span className="material-symbols-outlined text-xl" data-icon="notifications">notifications</span></button>
-      <button className="text-slate-400 hover:text-slate-100 transition-colors"><span className="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span></button>
-      <button className="text-slate-400 hover:text-slate-100 transition-colors"><img alt="User profile" className="rounded-full w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0IjFL17DsVn9cTzvmPEd4WmoT288BZ9BybkziBe_bkJka318z_tnH4iBgPjhw00Xy3sdOAt1gIUZCIpAZDc0ODwnpR0UtilxhCYh7eY7lrNAYzhb7l_6f5gkP2RG8IN88RiEadMHW7ESh6uuD0bNIGk6R7rJHEcy5Dd5rllqeFpoXYyaSRX7_y9mMads7kHY8re50kHkzPBzqwJxQtPOUV_J8KhdKjcA6GzYD22FIZx6lZpnVi9AAMrUOLmwXwBmck2Gf5AKMELIO" /></button>
+      <button aria-label="notifications" className="text-slate-400 hover:text-slate-100 transition-colors"><span className="material-symbols-outlined text-xl" data-icon="notifications">notifications</span></button>
+      <button aria-label="help_outline" className="text-slate-400 hover:text-slate-100 transition-colors"><span className="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span></button>
+      <button onClick={onOpenProfile} className="text-slate-400 hover:text-slate-100 transition-colors"><img alt="User profile" className="rounded-full w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0IjFL17DsVn9cTzvmPEd4WmoT288BZ9BybkziBe_bkJka318z_tnH4iBgPjhw00Xy3sdOAt1gIUZCIpAZDc0ODwnpR0UtilxhCYh7eY7lrNAYzhb7l_6f5gkP2RG8IN88RiEadMHW7ESh6uuD0bNIGk6R7rJHEcy5Dd5rllqeFpoXYyaSRX7_y9mMads7kHY8re50kHkzPBzqwJxQtPOUV_J8KhdKjcA6GzYD22FIZx6lZpnVi9AAMrUOLmwXwBmck2Gf5AKMELIO" /></button>
       </div>
       </header>
       {/* Settings Content */}

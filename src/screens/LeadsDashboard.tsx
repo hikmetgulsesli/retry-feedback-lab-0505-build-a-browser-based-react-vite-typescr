@@ -92,22 +92,22 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       </div>
       </div>
       <div className="flex-1 py-md flex flex-col gap-xs overflow-y-auto">
-      <a className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('leads')}>
+      <button className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}>
       <span className="material-symbols-outlined mr-md">leaderboard</span>
       <span className="font-label-md text-label-md">Leads</span>
-      </a>
-      <a className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('pipeline')}>
+      </button>
+      <button className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}>
       <span className="material-symbols-outlined mr-md">view_kanban</span>
       <span className="font-label-md text-label-md">Pipeline</span>
-      </a>
-      <a className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('insights')}>
+      </button>
+      <button className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}>
       <span className="material-symbols-outlined mr-md">analytics</span>
       <span className="font-label-md text-label-md">Insights</span>
-      </a>
-      <a className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('settings')}>
+      </button>
+      <button className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}>
       <span className="material-symbols-outlined mr-md">settings</span>
       <span className="font-label-md text-label-md">Settings</span>
-      </a>
+      </button>
       </div>
       </nav>
       {/* Main Content Area */}

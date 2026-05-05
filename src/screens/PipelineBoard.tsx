@@ -68,25 +68,25 @@ export function PipelineBoard(props: PipelineBoardProps) {
       </div>
       </div>
       <div className="flex-1 py-4 flex flex-col gap-1 overflow-y-auto">
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('leads')}>
+      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('leads')}>
       <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'leads' ? 'icon-fill' : ''}`} data-icon="leaderboard">leaderboard</span>
       <span className={page === 'leads' ? 'font-semibold' : ''}>Leads</span>
-      </a>
+      </button>
       {/* Pipeline (ACTIVE) */}
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('pipeline')}>
+      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('pipeline')}>
       <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'pipeline' ? 'icon-fill' : ''}`} data-icon="view_kanban">view_kanban</span>
       <span className={page === 'pipeline' ? 'font-semibold' : ''}>Pipeline</span>
-      </a>
+      </button>
       {/* Insights */}
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('insights')}>
+      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('insights')}>
       <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'insights' ? 'icon-fill' : ''}`} data-icon="analytics">analytics</span>
       <span className={page === 'insights' ? 'font-semibold' : ''}>Insights</span>
-      </a>
+      </button>
       {/* Settings */}
-      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 mt-auto ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('settings')}>
+      <button className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 mt-auto ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} onClick={nav('settings')}>
       <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'settings' ? 'icon-fill' : ''}`} data-icon="settings">settings</span>
       <span className={page === 'settings' ? 'font-semibold' : ''}>Settings</span>
-      </a>
+      </button>
       </div>
       </nav>
       {/* Main Content Area */}

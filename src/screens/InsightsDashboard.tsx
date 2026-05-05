@@ -7,7 +7,7 @@
 // 3. Add onClick/onChange handlers to interactive elements
 // 4. Replace placeholder data with props/state
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useAppContext } from "../hooks/useAppState";
 
 interface InsightsDashboardProps {
@@ -25,6 +25,40 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
   };
 
   const page = state.currentPage;
+
+  // Computed metrics from actual task data
+  const totalLeads = state.tasks.length;
+  const totalPipeline = useMemo(() => state.tasks.reduce((sum, t) => sum + t.value, 0), [state.tasks]);
+  const closedTasks = useMemo(() => state.tasks.filter(t => t.status === 'closed').length, [state.tasks]);
+  const conversionRate = totalLeads > 0 ? ((closedTasks / totalLeads) * 100).toFixed(1) : '0.0';
+  const activeFollowups = useMemo(() => state.tasks.filter(t => t.status !== 'closed').length, [state.tasks]);
+
+  // Source distribution for bar chart
+  const sourceDistribution = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const t of state.tasks) {
+      counts[t.source] = (counts[t.source] || 0) + 1;
+    }
+    // Normalize to known sources, fill missing with 0
+    const sources = ['Website', 'Referral', 'Cold Call', 'LinkedIn', 'Conference', 'Direct', 'Inbound'];
+    const result: { source: string; count: number }[] = [];
+    for (const s of sources) {
+      if ((counts[s] || 0) > 0 || result.length < 4) {
+        result.push({ source: s, count: counts[s] || 0 });
+      }
+    }
+    // Trim to top 4 by count for the chart
+    result.sort((a, b) => b.count - a.count);
+    return result.slice(0, 4);
+  }, [state.tasks]);
+
+  const maxSourceCount = Math.max(...sourceDistribution.map(s => s.count), 1);
+
+  const formatCurrency = (val: number) => {
+    if (val >= 1_000_000) return `$${(val / 1_000_000).toFixed(1)}M`;
+    if (val >= 1_000) return `$${(val / 1_000).toFixed(0)}K`;
+    return `$${val}`;
+  };
 
   return (
     <>
@@ -112,10 +146,10 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <h3 className="font-label-md text-on-surface-variant uppercase tracking-widest">Total Leads</h3>
       <span className="material-symbols-outlined text-primary-container">groups</span>
       </div>
-      <div className="font-display text-on-surface mt-2 text-[32px]">1,248</div>
+      <div className="font-display text-on-surface mt-2 text-[32px]">{totalLeads.toLocaleString()}</div>
       <div className="flex items-center gap-1 text-tertiary font-label-sm mt-1">
       <span className="material-symbols-outlined text-[14px]">trending_up</span>
-      <span>+12.5% vs last month</span>
+      <span>+{Math.max(0, totalLeads - 1000)} vs baseline</span>
       </div>
       </div>
       {/* Card 2 */}
@@ -125,10 +159,10 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <h3 className="font-label-md text-on-surface-variant uppercase tracking-widest">Conversion Rate</h3>
       <span className="material-symbols-outlined text-tertiary">percent</span>
       </div>
-      <div className="font-display text-on-surface mt-2 text-[32px]">4.2%</div>
+      <div className="font-display text-on-surface mt-2 text-[32px]">{conversionRate}%</div>
       <div className="flex items-center gap-1 text-tertiary font-label-sm mt-1">
       <span className="material-symbols-outlined text-[14px]">trending_up</span>
-      <span>+0.8% vs last month</span>
+      <span>{closedTasks} closed of {totalLeads}</span>
       </div>
       </div>
       {/* Card 3 */}
@@ -138,10 +172,10 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <h3 className="font-label-md text-on-surface-variant uppercase tracking-widest">Total Pipeline</h3>
       <span className="material-symbols-outlined text-primary-container">attach_money</span>
       </div>
-      <div className="font-display text-on-surface mt-2 text-[32px]">$8.4M</div>
+      <div className="font-display text-on-surface mt-2 text-[32px]">{formatCurrency(totalPipeline)}</div>
       <div className="flex items-center gap-1 text-tertiary font-label-sm mt-1">
       <span className="material-symbols-outlined text-[14px]">trending_up</span>
-      <span>+2.1M vs last month</span>
+      <span>{state.tasks.length} active leads</span>
       </div>
       </div>
       {/* Card 4 */}
@@ -151,10 +185,10 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <h3 className="font-label-md text-on-surface-variant uppercase tracking-widest">Active Follow-ups</h3>
       <span className="material-symbols-outlined text-error">assignment_late</span>
       </div>
-      <div className="font-display text-on-surface mt-2 text-[32px]">342</div>
+      <div className="font-display text-on-surface mt-2 text-[32px]">{activeFollowups}</div>
       <div className="flex items-center gap-1 text-error font-label-sm mt-1">
       <span className="material-symbols-outlined text-[14px]">trending_down</span>
-      <span>-15 vs last week</span>
+      <span>{totalLeads - activeFollowups} completed</span>
       </div>
       </div>
       </div>
@@ -174,10 +208,10 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <div className="flex-1 flex items-end gap-2 relative pt-6">
       {/* Y-Axis Labels */}
       <div className="absolute left-0 top-0 bottom-8 w-8 flex flex-col justify-between text-on-surface-variant font-mono-data text-[10px] items-end pr-2 border-r border-outline-variant">
-      <span>400</span>
-      <span>300</span>
-      <span>200</span>
-      <span>100</span>
+      <span>{maxSourceCount}</span>
+      <span>{Math.round(maxSourceCount * 0.75)}</span>
+      <span>{Math.round(maxSourceCount * 0.5)}</span>
+      <span>{Math.round(maxSourceCount * 0.25)}</span>
       <span>0</span>
       </div>
       {/* Grid Lines */}
@@ -189,34 +223,24 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <div className="w-full border-t border-outline-variant/30"></div>
       </div>
       {/* Bars Container */}
-      <div className="flex-1 flex items-end justify-around pl-8 h-[calc(100%-32px)] z-10">{/* Bar 1 */}
-      <div className="flex flex-col items-center w-full group">
-      <div className="w-10 md:w-14 bg-primary-container rounded-t h-[80%] relative transition-colors duration-300 group-hover:brightness-125 shadow-lg shadow-primary-container/20">
-      <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-surface-bright text-on-surface font-bold font-mono-data text-[12px] py-1 px-2 rounded pointer-events-none transition-opacity border border-outline-variant">320</div>
+      <div className="flex-1 flex items-end justify-around pl-8 h-[calc(100%-32px)] z-10">
+      {sourceDistribution.map((item, idx) => {
+        const pct = Math.max((item.count / maxSourceCount) * 100, 5);
+        const barColor = idx === 0 ? 'bg-primary-container' : idx === 1 ? 'bg-tertiary' : idx === 2 ? 'bg-secondary-container' : 'bg-outline';
+        const shadowColor = idx === 0 ? 'shadow-primary-container/20' : idx === 1 ? 'shadow-tertiary/20' : idx === 2 ? 'shadow-secondary-container/20' : 'shadow-outline/20';
+        return (
+      <div key={item.source} className="flex flex-col items-center w-full group">
+      <div className={`w-10 md:w-14 ${barColor} rounded-t relative transition-colors duration-300 group-hover:brightness-125 shadow-lg ${shadowColor}`} style={{ height: `${pct}%` }}>
+      <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-surface-bright text-on-surface font-bold font-mono-data text-[12px] py-1 px-2 rounded pointer-events-none transition-opacity border border-outline-variant">{item.count}</div>
       </div>
-      <div className="font-bold text-on-surface mt-4 text-[12px] uppercase tracking-wider">Organic</div>
+      <div className="font-bold text-on-surface mt-4 text-[12px] uppercase tracking-wider">{item.source}</div>
       </div>
-      {/* Bar 2 */}
-      <div className="flex flex-col items-center w-full group">
-      <div className="w-10 md:w-14 bg-tertiary rounded-t h-[65%] relative transition-colors duration-300 group-hover:brightness-125 shadow-lg shadow-tertiary/20">
-      <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-surface-bright text-on-surface font-bold font-mono-data text-[12px] py-1 px-2 rounded pointer-events-none transition-opacity border border-outline-variant">260</div>
+        );
+      })}
+      {sourceDistribution.length === 0 && (
+        <div className="flex-1 flex items-center justify-center text-on-surface-variant font-body-sm">No data available</div>
+      )}
       </div>
-      <div className="font-bold text-on-surface mt-4 text-[12px] uppercase tracking-wider">Direct</div>
-      </div>
-      {/* Bar 3 */}
-      <div className="flex flex-col items-center w-full group">
-      <div className="w-10 md:w-14 bg-secondary-container rounded-t h-[40%] relative transition-colors duration-300 group-hover:brightness-125 shadow-lg shadow-secondary-container/20">
-      <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-surface-bright text-on-surface font-bold font-mono-data text-[12px] py-1 px-2 rounded pointer-events-none transition-opacity border border-outline-variant">160</div>
-      </div>
-      <div className="font-bold text-on-surface mt-4 text-[12px] uppercase tracking-wider">Referral</div>
-      </div>
-      {/* Bar 4 */}
-      <div className="flex flex-col items-center w-full group">
-      <div className="w-10 md:w-14 bg-outline rounded-t h-[20%] relative transition-colors duration-300 group-hover:brightness-125 shadow-lg shadow-outline/20">
-      <div className="absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-surface-bright text-on-surface font-bold font-mono-data text-[12px] py-1 px-2 rounded pointer-events-none transition-opacity border border-outline-variant">80</div>
-      </div>
-      <div className="font-bold text-on-surface mt-4 text-[12px] uppercase tracking-wider">Social</div>
-      </div></div>
       </div>
       </div>
       {/* Line Chart: Won vs Lost Trend */}

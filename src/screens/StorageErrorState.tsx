@@ -8,10 +8,22 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
+import { useAppContext } from "../hooks/useAppState";
 
 interface StorageErrorStateProps {}
 
 export function StorageErrorState(props: StorageErrorStateProps) {
+  const { state, actions } = useAppContext();
+
+  const handleRetry = () => {
+    actions.dismissStorageError();
+    actions.navigate('leads');
+  };
+
+  const handleReset = () => {
+    actions.resetLocalData();
+  };
+
   return (
     <>
       {/* TopNavBar (Hidden due to Semantic Shell Mandate for transactional/error states) */}
@@ -48,11 +60,11 @@ export function StorageErrorState(props: StorageErrorStateProps) {
       </div>
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-sm w-full justify-center">
-      <button className="h-[44px] px-lg rounded-DEFAULT bg-primary-container text-on-primary-container font-label-md text-label-md flex items-center justify-center gap-xs hover:opacity-90 transition-opacity min-w-[140px] border border-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+      <button onClick={handleRetry} className="h-[44px] px-lg rounded-DEFAULT bg-primary-container text-on-primary-container font-label-md text-label-md flex items-center justify-center gap-xs hover:opacity-90 transition-opacity min-w-[140px] border border-transparent focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
       <span className="material-symbols-outlined text-[18px]" data-icon="sync">sync</span>
                       Retry Sync
                   </button>
-      <button className="h-[44px] px-lg rounded-DEFAULT bg-transparent text-error border border-error font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-error/10 transition-colors min-w-[140px] focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-background">
+      <button onClick={handleReset} className="h-[44px] px-lg rounded-DEFAULT bg-transparent text-error border border-error font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-error/10 transition-colors min-w-[140px] focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-background">
       <span className="material-symbols-outlined text-[18px]" data-icon="delete_forever">delete_forever</span>
                       Reset Local Data
                   </button>

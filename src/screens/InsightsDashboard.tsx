@@ -8,10 +8,21 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
+import { useAppContext } from "../hooks/useAppState";
 
 interface InsightsDashboardProps {}
 
 export function InsightsDashboard(props: InsightsDashboardProps) {
+  const { state, actions } = useAppContext();
+  const [search, setSearch] = useState(state.searchQuery);
+
+  const nav = (page: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    actions.navigate(page as any);
+  };
+
+  const page = state.currentPage;
+
   return (
     <>
       {/* SideNavBar (Web Only) */}
@@ -26,25 +37,25 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       </div>
       <ul className="flex flex-col gap-1 w-full">
       <li>
-      <a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 h-[44px]" href="#">
+      <a className={`flex items-center px-4 py-2 h-[44px] ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('leads')}>
       <span className="material-symbols-outlined mr-3 text-lg">leaderboard</span>
       <span className="font-label-md">Leads</span>
       </a>
       </li>
       <li>
-      <a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 h-[44px]" href="#">
+      <a className={`flex items-center px-4 py-2 h-[44px] ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('pipeline')}>
       <span className="material-symbols-outlined mr-3 text-lg">view_kanban</span>
       <span className="font-label-md">Pipeline</span>
       </a>
       </li>
       <li>
-      <a className="bg-blue-600/10 text-blue-500 border-r-2 border-blue-600 flex items-center px-4 py-2 h-[44px]" href="#">
+      <a className={`flex items-center px-4 py-2 h-[44px] ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('insights')}>
       <span className="material-symbols-outlined mr-3 text-lg">analytics</span>
       <span className="font-label-md">Insights</span>
       </a>
       </li>
       <li>
-      <a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 h-[44px]" href="#">
+      <a className={`flex items-center px-4 py-2 h-[44px] ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('settings')}>
       <span className="material-symbols-outlined mr-3 text-lg">settings</span>
       <span className="font-label-md">Settings</span>
       </a>
@@ -59,7 +70,7 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <div className="md:hidden text-lg font-bold text-slate-100 uppercase tracking-widest">Greenhouse Ops</div>
       <div className="hidden md:flex relative h-[32px] w-64 items-center">
       <span className="material-symbols-outlined absolute left-2 text-slate-400 text-sm">search</span>
-      <input className="w-full h-full bg-surface-container-high border border-outline-variant rounded pl-8 pr-2 text-on-surface font-body-sm focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none placeholder-slate-500" placeholder="Search..." type="text" />
+      <input className="w-full h-full bg-surface-container-high border border-outline-variant rounded pl-8 pr-2 text-on-surface font-body-sm focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none placeholder-slate-500" placeholder="Search..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
       </div>
       <div className="flex items-center gap-2">

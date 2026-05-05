@@ -8,10 +8,44 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
+import { useAppContext } from "../hooks/useAppState";
 
 interface SettingsProps {}
 
 export function Settings(props: SettingsProps) {
+  const { state, actions } = useAppContext();
+  const [density, setDensity] = useState(state.settings.density);
+  const [currency, setCurrency] = useState(state.settings.currency);
+  const [emailAlerts, setEmailAlerts] = useState(state.settings.emailAlerts);
+  const [search, setSearch] = useState(state.searchQuery);
+
+  const nav = (page: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    actions.navigate(page as any);
+  };
+
+  const page = state.currentPage;
+
+  const handleDensityChange = (val: 'compact' | 'relaxed') => {
+    setDensity(val);
+    actions.updateSettings({ density: val });
+  };
+
+  const handleCurrencyChange = (val: 'usd' | 'eur') => {
+    setCurrency(val);
+    actions.updateSettings({ currency: val });
+  };
+
+  const handleEmailToggle = () => {
+    const next = !emailAlerts;
+    setEmailAlerts(next);
+    actions.updateSettings({ emailAlerts: next });
+  };
+
+  const handleReset = () => {
+    actions.resetLocalData();
+  };
+
   return (
     <>
       {/* SideNavBar */}
@@ -21,10 +55,10 @@ export function Settings(props: SettingsProps) {
       <p className="text-slate-400 text-[10px]">v2.4.0 High-Density</p>
       </div>
       <ul className="flex-1 flex flex-col gap-1">
-      <li><a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#"><span className="material-symbols-outlined mr-3 text-lg" data-icon="leaderboard">leaderboard</span> Leads</a></li>
-      <li><a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#"><span className="material-symbols-outlined mr-3 text-lg" data-icon="view_kanban">view_kanban</span> Pipeline</a></li>
-      <li><a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#"><span className="material-symbols-outlined mr-3 text-lg" data-icon="analytics">analytics</span> Insights</a></li>
-      <li><a className="bg-blue-600/10 text-blue-500 border-r-2 border-blue-600 flex items-center px-4 py-2 cursor-pointer active:opacity-80" href="#"><span className="material-symbols-outlined mr-3 text-lg" data-icon="settings" style={{fontVariationSettings: "'FILL' 1"}}>settings</span> Settings</a></li>
+      <li><a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('leads')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="leaderboard">leaderboard</span> Leads</a></li>
+      <li><a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('pipeline')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="view_kanban">view_kanban</span> Pipeline</a></li>
+      <li><a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('insights')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="analytics">analytics</span> Insights</a></li>
+      <li><a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('settings')}><span className="material-symbols-outlined mr-3 text-lg" data-icon="settings" style={{fontVariationSettings: "'FILL' 1"}}>settings</span> Settings</a></li>
       </ul>
       </nav>
       {/* Main Content Area */}
@@ -35,7 +69,7 @@ export function Settings(props: SettingsProps) {
       <span className="text-lg font-bold text-slate-100">Greenhouse Ops</span>
       <div className="relative flex items-center ml-8">
       <span className="material-symbols-outlined absolute left-2 text-slate-400 text-sm">search</span>
-      <input className="bg-surface-container-high border border-outline-variant rounded text-on-surface pl-8 pr-3 py-1 h-8 text-xs w-64 focus:border-primary-container focus:ring-0" placeholder="Search..." type="text" />
+      <input className="bg-surface-container-high border border-outline-variant rounded text-on-surface pl-8 pr-3 py-1 h-8 text-xs w-64 focus:border-primary-container focus:ring-0" placeholder="Search..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
       </div>
       <div className="flex items-center gap-3">
@@ -60,7 +94,7 @@ export function Settings(props: SettingsProps) {
       <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Density Configuration</label>
       <div className="flex gap-4">
       <label className="flex-1 relative border border-outline-variant rounded-lg p-md cursor-pointer hover:border-primary-fixed-dim transition-colors flex items-center gap-3 bg-surface-container-low has-[:checked]:border-primary-container has-[:checked]:bg-primary-container/10">
-      <input checked={true} className="sr-only" name="density" type="radio" value="compact" />
+      <input checked={density === 'compact'} onChange={() => handleDensityChange('compact')} className="sr-only" name="density" type="radio" value="compact" />
       <span className="material-symbols-outlined text-on-surface-variant">grid_view</span>
       <div>
       <span className="block font-label-md text-label-md text-on-surface">Compact</span>
@@ -68,7 +102,7 @@ export function Settings(props: SettingsProps) {
       </div>
       </label>
       <label className="flex-1 relative border border-outline-variant rounded-lg p-md cursor-pointer hover:border-primary-fixed-dim transition-colors flex items-center gap-3 bg-surface-container-low has-[:checked]:border-primary-container has-[:checked]:bg-primary-container/10">
-      <input className="sr-only" name="density" type="radio" value="relaxed" />
+      <input checked={density === 'relaxed'} onChange={() => handleDensityChange('relaxed')} className="sr-only" name="density" type="radio" value="relaxed" />
       <span className="material-symbols-outlined text-on-surface-variant">view_stream</span>
       <div>
       <span className="block font-label-md text-label-md text-on-surface">Relaxed</span>
@@ -85,7 +119,7 @@ export function Settings(props: SettingsProps) {
       </div>
       <div className="flex flex-col gap-md max-w-sm">
       <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Currency Format</label>
-      <select className="bg-surface-container-low border border-outline-variant rounded-lg text-on-surface px-3 h-[44px] focus:border-primary-container focus:ring-0 font-body-md text-body-md w-full appearance-none">
+      <select className="bg-surface-container-low border border-outline-variant rounded-lg text-on-surface px-3 h-[44px] focus:border-primary-container focus:ring-0 font-body-md text-body-md w-full appearance-none" value={currency} onChange={(e) => handleCurrencyChange(e.target.value as 'usd' | 'eur')}>
       <option value="usd">USD ($) - United States Dollar</option>
       <option value="eur">EUR (€) - Euro</option>
       </select>
@@ -102,7 +136,7 @@ export function Settings(props: SettingsProps) {
       <span className="block font-body-sm text-body-sm text-on-surface-variant">Receive alerts for system failures and threshold breaches.</span>
       </div>
       <label className="relative inline-flex items-center cursor-pointer">
-      <input checked={true} className="sr-only peer" type="checkbox" value="" />
+      <input checked={emailAlerts} onChange={handleEmailToggle} className="sr-only peer" type="checkbox" value="" />
       <div className="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-on-primary-container after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container border border-outline-variant"></div>
       </label>
       </div>
@@ -117,7 +151,7 @@ export function Settings(props: SettingsProps) {
       <span className="block font-label-md text-label-md text-on-surface">Local Storage</span>
       <span className="block font-body-sm text-body-sm text-on-surface-variant">Clear cached sensor data and temporary UI states.</span>
       </div>
-      <button className="h-[40px] px-4 border border-outline-variant text-on-surface rounded font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+      <button onClick={handleReset} className="h-[40px] px-4 border border-outline-variant text-on-surface rounded font-label-md text-label-md hover:bg-surface-container-high transition-colors">
                                   Reset Local Storage
                               </button>
       </div>

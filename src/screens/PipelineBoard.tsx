@@ -8,10 +8,21 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
+import { useAppContext } from "../hooks/useAppState";
 
 interface PipelineBoardProps {}
 
 export function PipelineBoard(props: PipelineBoardProps) {
+  const { state, actions } = useAppContext();
+  const [search, setSearch] = useState(state.searchQuery);
+
+  const nav = (page: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    actions.navigate(page as any);
+  };
+
+  const page = state.currentPage;
+
   return (
     <>
       {/* SideNavBar */}
@@ -26,25 +37,24 @@ export function PipelineBoard(props: PipelineBoardProps) {
       </div>
       </div>
       <div className="flex-1 py-4 flex flex-col gap-1 overflow-y-auto">
-      {/* Leads */}
-      <a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#">
-      <span className="material-symbols-outlined mr-3 text-[18px]" data-icon="leaderboard">leaderboard</span>
-      <span>Leads</span>
+      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('leads')}>
+      <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'leads' ? 'icon-fill' : ''}`} data-icon="leaderboard">leaderboard</span>
+      <span className={page === 'leads' ? 'font-semibold' : ''}>Leads</span>
       </a>
       {/* Pipeline (ACTIVE) */}
-      <a className="bg-blue-600/10 text-blue-500 border-r-2 border-blue-600 flex items-center px-4 py-2 hover:bg-slate-800 dark:hover:bg-slate-800/50 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#">
-      <span className="material-symbols-outlined icon-fill mr-3 text-[18px]" data-icon="view_kanban">view_kanban</span>
-      <span className="font-semibold">Pipeline</span>
+      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('pipeline')}>
+      <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'pipeline' ? 'icon-fill' : ''}`} data-icon="view_kanban">view_kanban</span>
+      <span className={page === 'pipeline' ? 'font-semibold' : ''}>Pipeline</span>
       </a>
       {/* Insights */}
-      <a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#">
-      <span className="material-symbols-outlined mr-3 text-[18px]" data-icon="analytics">analytics</span>
-      <span>Insights</span>
+      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('insights')}>
+      <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'insights' ? 'icon-fill' : ''}`} data-icon="analytics">analytics</span>
+      <span className={page === 'insights' ? 'font-semibold' : ''}>Insights</span>
       </a>
       {/* Settings */}
-      <a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 mt-auto" href="#">
-      <span className="material-symbols-outlined mr-3 text-[18px]" data-icon="settings">settings</span>
-      <span>Settings</span>
+      <a className={`flex items-center px-4 py-2 transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 mt-auto ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('settings')}>
+      <span className={`material-symbols-outlined mr-3 text-[18px] ${page === 'settings' ? 'icon-fill' : ''}`} data-icon="settings">settings</span>
+      <span className={page === 'settings' ? 'font-semibold' : ''}>Settings</span>
       </a>
       </div>
       </nav>
@@ -56,7 +66,7 @@ export function PipelineBoard(props: PipelineBoardProps) {
       <span className="text-lg font-bold text-slate-100 tracking-tight">Greenhouse Ops</span>
       <div className="relative flex items-center ml-4">
       <span className="material-symbols-outlined absolute left-2 text-slate-400 text-[18px]">search</span>
-      <input className="bg-slate-800/50 border border-slate-700 text-slate-200 placeholder-slate-500 rounded pl-8 pr-3 py-1 text-xs focus:outline-none focus:border-blue-500 transition-colors w-64 h-7" placeholder="Search data..." type="text" />
+      <input className="bg-slate-800/50 border border-slate-700 text-slate-200 placeholder-slate-500 rounded pl-8 pr-3 py-1 text-xs focus:outline-none focus:border-blue-500 transition-colors w-64 h-7" placeholder="Search data..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
       </div>
       <div className="flex items-center gap-1">

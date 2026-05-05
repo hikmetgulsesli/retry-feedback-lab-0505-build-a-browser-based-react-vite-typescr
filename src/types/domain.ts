@@ -4,6 +4,7 @@ export interface AppSettings {
   density: 'compact' | 'relaxed';
   currency: 'usd' | 'eur';
   emailAlerts: boolean;
+  pushAlerts: boolean;
 }
 
 export interface Task {
@@ -32,6 +33,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   density: 'compact',
   currency: 'usd',
   emailAlerts: true,
+  pushAlerts: true,
 };
 
 export const DEFAULT_TASKS: Task[] = [

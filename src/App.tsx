@@ -33,10 +33,10 @@ export default function App() {
   return (
     <AppContext.Provider value={{ state, actions }}>
       <div className="relative h-screen w-screen overflow-hidden bg-background">
-        {page === 'leads' && state.tasks?.length === 0 && (
+        {page === 'leads' && state.tasks.length === 0 && (
           <EmptyStateDashboard onCreateLead={openLeadForm} onOpenProfile={openProfile} />
         )}
-        {page === 'leads' && state.tasks?.length > 0 && (
+        {page === 'leads' && state.tasks.length > 0 && (
           <LeadsDashboard onCreateLead={openLeadForm} onOpenProfile={openProfile} />
         )}
         {page === 'pipeline' && (

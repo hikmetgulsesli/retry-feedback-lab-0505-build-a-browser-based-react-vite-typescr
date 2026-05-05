@@ -127,11 +127,11 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <div className="flex items-center justify-between shrink-0 mb-2">
       <h1 className="font-h1 text-on-surface">Analytics Overview</h1>
       <div className="flex gap-2">
-      <button onClick={() => {}} className="h-[40px] px-4 border border-outline-variant rounded text-on-surface font-label-md hover:border-primary-container transition-colors flex items-center gap-2 bg-surface-container">
+      <button className="h-[40px] px-4 border border-outline-variant rounded text-on-surface font-label-md hover:border-primary-container transition-colors flex items-center gap-2 bg-surface-container">
       <span className="material-symbols-outlined text-sm">calendar_today</span>
                               Last 30 Days
                           </button>
-      <button onClick={() => {}} className="h-[40px] px-4 bg-primary-container text-white font-label-md rounded hover:opacity-90 transition-opacity flex items-center gap-2">
+      <button className="h-[40px] px-4 bg-primary-container text-white font-label-md rounded hover:opacity-90 transition-opacity flex items-center gap-2">
       <span className="material-symbols-outlined text-sm">download</span>
                               Export
                           </button>
@@ -289,14 +289,14 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       </linearGradient>
       </defs>
       {/* Won Line (Emerald Gradient) */}
-      <path d="M0,80 Q20,70 40,50 T80,30 T100,10" fill="none" stroke="url(#wonGradient)" strokeWidth="3" vectorEffect="non-scaling-stroke"></path>
+      <path d="M0,80 Q20,70 40,50 T80,30 T100,10" fill="none" stroke="url(#wonGradient)" strokeWidth="3" vector-effect="non-scaling-stroke"></path>
       {/* Lost Line (Blue Gradient - Replaces Red per 'vibrant blue' request) */}
-      <path d="M0,40 Q20,60 40,65 T80,55 T100,70" fill="none" stroke="url(#lostGradient)" strokeDasharray="4" strokeWidth="3" vectorEffect="non-scaling-stroke"></path>
+      <path d="M0,40 Q20,60 40,65 T80,55 T100,70" fill="none" stroke="url(#lostGradient)" strokeDasharray="4" strokeWidth="3" vector-effect="non-scaling-stroke"></path>
       {/* Data Points */}
-      <circle cx="0" cy="80" fill="var(--color-tertiary)" r="3" vectorEffect="non-scaling-stroke"></circle>
-      <circle cx="40" cy="50" fill="var(--color-tertiary)" r="3" vectorEffect="non-scaling-stroke"></circle>
-      <circle cx="80" cy="30" fill="var(--color-tertiary)" r="3" vectorEffect="non-scaling-stroke"></circle>
-      <circle cx="100" cy="10" fill="var(--color-tertiary)" r="3" vectorEffect="non-scaling-stroke"></circle>
+      <circle cx="0" cy="80" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
+      <circle cx="40" cy="50" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
+      <circle cx="80" cy="30" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
+      <circle cx="100" cy="10" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
       </svg>
       {/* X-Axis Labels */}
       <div className="absolute bottom-0 left-8 right-0 flex justify-between text-on-surface font-semibold font-mono-data text-[11px] pt-3 pr-4">

@@ -50,7 +50,10 @@ export function useAppState(): [AppState, AppActions] {
   }, []);
 
   const addTask = useCallback((task: Omit<Task, 'id'>) => {
-    const newTask: Task = { ...task, id: crypto.randomUUID() };
+    const newId = typeof crypto !== 'undefined' && crypto.randomUUID
+      ? crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const newTask: Task = { ...task, id: newId };
     setState((prev) => ({ ...prev, tasks: [...prev.tasks, newTask] }));
   }, []);
 

@@ -10,10 +10,13 @@
 import { useState } from "react";
 import { useAppContext } from "../hooks/useAppState";
 
-interface EmptyStateDashboardProps {}
+interface EmptyStateDashboardProps {
+  onCreateLead?: () => void;
+}
 
 export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
   const { state, actions } = useAppContext();
+  const { onCreateLead } = props;
   const [search, setSearch] = useState(state.searchQuery);
 
   const nav = (page: string) => (e: React.MouseEvent) => {
@@ -90,7 +93,7 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       <h1 className="font-h1 text-h1 text-on-surface">Lead Management</h1>
       <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">Review and manage incoming maintenance requests.</p>
       </div>
-      <button onClick={() => actions.navigate('leads')} className="hidden md:flex h-touch_target px-6 bg-primary-container text-on-primary-container rounded font-label-md text-label-md items-center justify-center hover:bg-primary-container/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+      <button onClick={onCreateLead} className="hidden md:flex h-touch_target px-6 bg-primary-container text-on-primary-container rounded font-label-md text-label-md items-center justify-center hover:bg-primary-container/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
       <span className="material-symbols-outlined mr-2 text-[18px]">add</span>
                           Create Lead
                       </button>
@@ -111,7 +114,7 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
                               Start tracking your greenhouse operations by adding your first lead.
                           </p>
       {/* CTA */}
-      <button onClick={() => actions.navigate('leads')} className="h-touch_target px-8 bg-primary-container text-on-primary-container rounded font-label-md text-label-md flex items-center justify-center hover:bg-primary-container/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+      <button onClick={onCreateLead} className="h-touch_target px-8 bg-primary-container text-on-primary-container rounded font-label-md text-label-md flex items-center justify-center hover:bg-primary-container/90 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
       <span className="material-symbols-outlined mr-2 text-[18px]">add</span>
                               Create Lead
                           </button>

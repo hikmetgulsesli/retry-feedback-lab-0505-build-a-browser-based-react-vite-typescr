@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, createContext, useContext } from 'react';
-import type { AppState, Page, AppSettings } from '../types/domain';
+import type { AppState, Page, AppSettings, Task } from '../types/domain';
 import { DEFAULT_STATE } from '../types/domain';
 import { loadState, saveState, clearState, StorageError } from '../utils/storage';
 
@@ -9,6 +9,9 @@ export interface AppActions {
   updateSettings: (settings: Partial<AppSettings>) => void;
   resetLocalData: () => void;
   dismissStorageError: () => void;
+  addTask: (task: Omit<Task, 'id'>) => void;
+  updateTask: (id: string, partial: Partial<Task>) => void;
+  deleteTask: (id: string) => void;
 }
 
 export const AppContext = createContext<{ state: AppState; actions: AppActions } | null>(null);
@@ -81,6 +84,49 @@ export function useAppState(): [AppState, AppActions] {
     setState((prev) => ({ ...prev, storageError: false }));
   }, []);
 
+  const addTask = useCallback((task: Omit<Task, 'id'>) => {
+    setState((prev) => {
+      const newTask: Task = { ...task, id: crypto.randomUUID() };
+      const next = { ...prev, tasks: [...prev.tasks, newTask] };
+      try {
+        saveState(next);
+      } catch {
+        next.storageError = true;
+      }
+      return next;
+    });
+  }, []);
+
+  const updateTask = useCallback((id: string, partial: Partial<Task>) => {
+    setState((prev) => {
+      const next = {
+        ...prev,
+        tasks: prev.tasks.map((t) => (t.id === id ? { ...t, ...partial } : t)),
+      };
+      try {
+        saveState(next);
+      } catch {
+        next.storageError = true;
+      }
+      return next;
+    });
+  }, []);
+
+  const deleteTask = useCallback((id: string) => {
+    setState((prev) => {
+      const next = {
+        ...prev,
+        tasks: prev.tasks.filter((t) => t.id !== id),
+      };
+      try {
+        saveState(next);
+      } catch {
+        next.storageError = true;
+      }
+      return next;
+    });
+  }, []);
+
   // Persist on mount if state loaded with defaults
   useEffect(() => {
     try {
@@ -97,6 +143,9 @@ export function useAppState(): [AppState, AppActions] {
     updateSettings,
     resetLocalData,
     dismissStorageError,
+    addTask,
+    updateTask,
+    deleteTask,
   };
 
   return [state, actions];

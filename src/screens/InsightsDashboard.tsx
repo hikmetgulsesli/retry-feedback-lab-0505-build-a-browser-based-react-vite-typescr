@@ -289,14 +289,14 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       </linearGradient>
       </defs>
       {/* Won Line (Emerald Gradient) */}
-      <path d="M0,80 Q20,70 40,50 T80,30 T100,10" fill="none" stroke="url(#wonGradient)" strokeWidth="3" vector-effect="non-scaling-stroke"></path>
+      <path d="M0,80 Q20,70 40,50 T80,30 T100,10" fill="none" stroke="url(#wonGradient)" strokeWidth="3" vectorEffect="non-scaling-stroke"></path>
       {/* Lost Line (Blue Gradient - Replaces Red per 'vibrant blue' request) */}
-      <path d="M0,40 Q20,60 40,65 T80,55 T100,70" fill="none" stroke="url(#lostGradient)" strokeDasharray="4" strokeWidth="3" vector-effect="non-scaling-stroke"></path>
+      <path d="M0,40 Q20,60 40,65 T80,55 T100,70" fill="none" stroke="url(#lostGradient)" strokeDasharray="4" strokeWidth="3" vectorEffect="non-scaling-stroke"></path>
       {/* Data Points */}
-      <circle cx="0" cy="80" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
-      <circle cx="40" cy="50" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
-      <circle cx="80" cy="30" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
-      <circle cx="100" cy="10" fill="var(--color-tertiary)" r="3" vector-effect="non-scaling-stroke"></circle>
+      <circle cx="0" cy="80" fill="var(--color-tertiary)" r="3" vectorEffect="non-scaling-stroke"></circle>
+      <circle cx="40" cy="50" fill="var(--color-tertiary)" r="3" vectorEffect="non-scaling-stroke"></circle>
+      <circle cx="80" cy="30" fill="var(--color-tertiary)" r="3" vectorEffect="non-scaling-stroke"></circle>
+      <circle cx="100" cy="10" fill="var(--color-tertiary)" r="3" vectorEffect="non-scaling-stroke"></circle>
       </svg>
       {/* X-Axis Labels */}
       <div className="absolute bottom-0 left-8 right-0 flex justify-between text-on-surface font-semibold font-mono-data text-[11px] pt-3 pr-4">

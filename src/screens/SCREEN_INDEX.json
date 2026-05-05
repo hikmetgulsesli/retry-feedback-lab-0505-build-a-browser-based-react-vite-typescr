@@ -1,0 +1,92 @@
+[
+  {
+    "screenId": "6828e03647944bfb84ed4dfcc7cf7d51",
+    "title": "Lead Create/Edit Form",
+    "componentName": "LeadCreateeditForm",
+    "file": "src/screens/LeadCreateeditForm.tsx",
+    "buttons": 3,
+    "inputs": 4,
+    "links": 0
+  },
+  {
+    "screenId": "b885aa71b4824aa0a91d5c1368b93532",
+    "title": "Profile Panel",
+    "componentName": "ProfilePanel",
+    "file": "src/screens/ProfilePanel.tsx",
+    "buttons": 4,
+    "inputs": 1,
+    "links": 0
+  },
+  {
+    "screenId": "8bf826f189124eda96f2da21ca1a8806",
+    "title": "Pipeline Board",
+    "componentName": "PipelineBoard",
+    "file": "src/screens/PipelineBoard.tsx",
+    "buttons": 5,
+    "inputs": 1,
+    "links": 4
+  },
+  {
+    "screenId": "9335752559b3466cb0edc9de2d151b99",
+    "title": "Pipeline Board",
+    "componentName": "PipelineBoard",
+    "file": "src/screens/PipelineBoard.tsx",
+    "buttons": 5,
+    "inputs": 1,
+    "links": 4
+  },
+  {
+    "screenId": "98963c03bdc14bbf955d8c01d2bcdac2",
+    "title": "Storage Error State",
+    "componentName": "StorageErrorState",
+    "file": "src/screens/StorageErrorState.tsx",
+    "buttons": 2,
+    "inputs": 0,
+    "links": 0
+  },
+  {
+    "screenId": "fcb1d45bc8ca410d8b459c630f9dec03",
+    "title": "Insights Dashboard",
+    "componentName": "InsightsDashboard",
+    "file": "src/screens/InsightsDashboard.tsx",
+    "buttons": 6,
+    "inputs": 1,
+    "links": 4
+  },
+  {
+    "screenId": "0693f3906a6643d2a8561c082189d399",
+    "title": "Settings",
+    "componentName": "Settings",
+    "file": "src/screens/Settings.tsx",
+    "buttons": 4,
+    "inputs": 4,
+    "links": 4
+  },
+  {
+    "screenId": "f83dcb1b07d94f6d9d6caaebcb9809b5",
+    "title": "Empty State Dashboard",
+    "componentName": "EmptyStateDashboard",
+    "file": "src/screens/EmptyStateDashboard.tsx",
+    "buttons": 6,
+    "inputs": 1,
+    "links": 8
+  },
+  {
+    "screenId": "32ca59c01b0d4262860fb66a301f0a60",
+    "title": "Insights Dashboard",
+    "componentName": "InsightsDashboard",
+    "file": "src/screens/InsightsDashboard.tsx",
+    "buttons": 6,
+    "inputs": 1,
+    "links": 4
+  },
+  {
+    "screenId": "a16ba1b7eaca41d3a980e4069d2590c5",
+    "title": "Leads Dashboard",
+    "componentName": "LeadsDashboard",
+    "file": "src/screens/LeadsDashboard.tsx",
+    "buttons": 10,
+    "inputs": 2,
+    "links": 4
+  }
+]

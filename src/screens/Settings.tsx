@@ -76,8 +76,8 @@ export function Settings(props: SettingsProps) {
       </div>
       </div>
       <div className="flex items-center gap-3">
-      <button aria-label="notifications" className="text-slate-400 hover:text-slate-100 transition-colors"><span className="material-symbols-outlined text-xl" data-icon="notifications">notifications</span></button>
-      <button aria-label="help_outline" className="text-slate-400 hover:text-slate-100 transition-colors"><span className="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span></button>
+      <button aria-label="Notifications" className="text-slate-400 hover:text-slate-100 transition-colors"><span className="material-symbols-outlined text-xl" data-icon="notifications">notifications</span></button>
+      <button aria-label="Help" className="text-slate-400 hover:text-slate-100 transition-colors"><span className="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span></button>
       <button onClick={onOpenProfile} className="text-slate-400 hover:text-slate-100 transition-colors"><img alt="User profile" className="rounded-full w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0IjFL17DsVn9cTzvmPEd4WmoT288BZ9BybkziBe_bkJka318z_tnH4iBgPjhw00Xy3sdOAt1gIUZCIpAZDc0ODwnpR0UtilxhCYh7eY7lrNAYzhb7l_6f5gkP2RG8IN88RiEadMHW7ESh6uuD0bNIGk6R7rJHEcy5Dd5rllqeFpoXYyaSRX7_y9mMads7kHY8re50kHkzPBzqwJxQtPOUV_J8KhdKjcA6GzYD22FIZx6lZpnVi9AAMrUOLmwXwBmck2Gf5AKMELIO" /></button>
       </div>
       </header>

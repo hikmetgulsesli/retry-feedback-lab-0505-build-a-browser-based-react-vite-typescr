@@ -69,7 +69,7 @@ export function LeadCreateeditForm(props: LeadCreateeditFormProps) {
       </div>
       {/* Form Body */}
       <div className="p-xl flex-1 overflow-y-auto">
-      <form onSubmit={handleSubmit} className="space-y-xl">
+      <form id="leadForm" onSubmit={handleSubmit} className="space-y-xl">
       {/* Section: Primary Info */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
       {/* Full Name */}
@@ -139,7 +139,7 @@ export function LeadCreateeditForm(props: LeadCreateeditFormProps) {
       <button onClick={onClose} className="h-touch_target px-lg border border-outline-variant text-on-surface font-label-md text-label-md rounded-DEFAULT hover:bg-surface-variant transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container-low flex items-center justify-center" type="button">
                       Cancel
                   </button>
-      <button onClick={handleSubmit} className="h-touch_target px-lg bg-primary-container text-on-primary-container font-label-md text-label-md rounded-DEFAULT hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container-low flex items-center justify-center gap-sm" type="submit">
+      <button form="leadForm" className="h-touch_target px-lg bg-primary-container text-on-primary-container font-label-md text-label-md rounded-DEFAULT hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 focus:ring-offset-surface-container-low flex items-center justify-center gap-sm" type="submit">
       <span className="material-symbols-outlined text-[18px]" style={{fontVariationSettings: "'FILL' 1"}}>save</span>
                       Save Lead
                   </button>

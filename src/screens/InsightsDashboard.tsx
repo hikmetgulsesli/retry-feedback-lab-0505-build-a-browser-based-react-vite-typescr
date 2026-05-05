@@ -77,13 +77,13 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       </div>
       </div>
       <div className="flex items-center gap-2">
-      <button className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded">
+      <button aria-label="Notifications" className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded">
       <span className="material-symbols-outlined text-lg">notifications</span>
       </button>
-      <button className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded">
+      <button aria-label="Help" className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded">
       <span className="material-symbols-outlined text-lg">help_outline</span>
       </button>
-      <button onClick={onOpenProfile} className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded overflow-hidden">
+      <button aria-label="Account" onClick={onOpenProfile} className="h-[32px] w-[32px] flex items-center justify-center text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded overflow-hidden">
       <img alt="User profile" className="w-full h-full object-cover" data-alt="A highly detailed close-up portrait photo of an industrial control room operator. The lighting is cinematic, characterized by cool blue and soft green glows reflecting off unseen monitors, enhancing the technical, dark-mode aesthetic of the application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkvdNvLq1gkeq5WfwH820tkEgkYGN9jR9-RxJLZlTV73WFZWcFYBZOZm48LC9iPPfTYFjUCY_Kr7fe7Uc5K0YyN5UKo9TCaqreDXNMyBj3f71HCcPTd8vlO52CAzH8gTPgWjS5R1OID3PnbXKaAfSWZkgerlRn8EmOnYUytN047zUSo2EOUDFxSLAg_VMbOT2Pcev_rF8blJGGjE--GMY12h8VDi8RJm7ma9p2vsPTrNyL-YNcrGMSIyKh-kIIQGlymXSbTXBIhY6Z" />
       </button>
       </div>

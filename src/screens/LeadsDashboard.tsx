@@ -123,13 +123,13 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       </div>
       </div>
       <div className="flex items-center gap-xs">
-      <button aria-label="notifications" className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8">
+      <button aria-label="Notifications" className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8">
       <span className="material-symbols-outlined">notifications</span>
       </button>
-      <button aria-label="help_outline" className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8">
+      <button aria-label="Help" className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8">
       <span className="material-symbols-outlined">help_outline</span>
       </button>
-      <button aria-label="account_circle" onClick={onOpenProfile} className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8 ml-2">
+      <button aria-label="Account" onClick={onOpenProfile} className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8 ml-2">
       <span className="material-symbols-outlined text-xl">account_circle</span>
       </button>
       </div>

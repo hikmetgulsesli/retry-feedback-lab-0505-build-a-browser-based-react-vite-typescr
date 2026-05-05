@@ -101,13 +101,13 @@ export function PipelineBoard(props: PipelineBoardProps) {
       </div>
       </div>
       <div className="flex items-center gap-1">
-      <button className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded cursor-pointer active:opacity-80">
+      <button aria-label="Notifications" className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded cursor-pointer active:opacity-80">
       <span className="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
       </button>
-      <button className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded cursor-pointer active:opacity-80">
+      <button aria-label="Help" className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded cursor-pointer active:opacity-80">
       <span className="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
       </button>
-      <button onClick={onOpenProfile} className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded cursor-pointer active:opacity-80 ml-2">
+      <button aria-label="Account" onClick={onOpenProfile} className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors rounded cursor-pointer active:opacity-80 ml-2">
       <span className="material-symbols-outlined text-[24px]" data-icon="account_circle">account_circle</span>
       </button>
       </div>

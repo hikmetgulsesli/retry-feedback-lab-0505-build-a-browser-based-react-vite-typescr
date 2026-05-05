@@ -139,7 +139,7 @@ describe('Primary workflow screens', () => {
 
   it('opens and closes profile panel', () => {
     render(<App />);
-    const profileBtn = screen.getAllByLabelText(/account_circle/i)[0];
+    const profileBtn = screen.getAllByLabelText(/Account/i)[0];
     fireEvent.click(profileBtn);
 
     expect(screen.getByRole('heading', { name: /Profile/i })).toBeInTheDocument();

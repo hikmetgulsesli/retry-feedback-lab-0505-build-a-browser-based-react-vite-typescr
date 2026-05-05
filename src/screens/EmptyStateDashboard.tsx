@@ -40,13 +40,13 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       <input className="bg-slate-800 border-none rounded text-sm text-slate-100 pl-8 pr-3 py-1 focus:ring-1 focus:ring-blue-500 placeholder-slate-500 w-64 h-7" placeholder="Search operations..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
       <div className="flex items-center gap-2">
-      <button aria-label="notifications" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Notifications" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined text-[20px]">notifications</span>
       </button>
-      <button aria-label="help_outline" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Help" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined text-[20px]">help_outline</span>
       </button>
-      <button aria-label="account_circle" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Account" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined text-[20px]">account_circle</span>
       </button>
       </div>

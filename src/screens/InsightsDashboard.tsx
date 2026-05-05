@@ -127,11 +127,11 @@ export function InsightsDashboard(props: InsightsDashboardProps) {
       <div className="flex items-center justify-between shrink-0 mb-2">
       <h1 className="font-h1 text-on-surface">Analytics Overview</h1>
       <div className="flex gap-2">
-      <button onClick={() => {}} className="h-[40px] px-4 border border-outline-variant rounded text-on-surface font-label-md hover:border-primary-container transition-colors flex items-center gap-2 bg-surface-container">
+      <button className="h-[40px] px-4 border border-outline-variant rounded text-on-surface font-label-md hover:border-primary-container transition-colors flex items-center gap-2 bg-surface-container">
       <span className="material-symbols-outlined text-sm">calendar_today</span>
                               Last 30 Days
                           </button>
-      <button onClick={() => {}} className="h-[40px] px-4 bg-primary-container text-white font-label-md rounded hover:opacity-90 transition-opacity flex items-center gap-2">
+      <button className="h-[40px] px-4 bg-primary-container text-white font-label-md rounded hover:opacity-90 transition-opacity flex items-center gap-2">
       <span className="material-symbols-outlined text-sm">download</span>
                               Export
                           </button>

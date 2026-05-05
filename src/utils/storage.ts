@@ -19,6 +19,7 @@ export function loadState(): AppState {
       ...DEFAULT_STATE,
       ...parsed,
       settings: { ...DEFAULT_STATE.settings, ...parsed.settings },
+      tasks: Array.isArray(parsed.tasks) ? parsed.tasks : DEFAULT_STATE.tasks,
     };
   } catch (e) {
     console.warn('Failed to load state from localStorage:', e);

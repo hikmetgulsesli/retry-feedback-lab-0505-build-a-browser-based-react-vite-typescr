@@ -215,7 +215,7 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       <button className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled={true}>
       <span className="material-symbols-outlined text-sm">chevron_left</span>
       </button>
-      <button className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled={filteredTasks.length <= 10}>
+      <button className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled={state.tasks.length <= 10}>
       <span className="material-symbols-outlined text-sm">chevron_right</span>
       </button>
       </div>

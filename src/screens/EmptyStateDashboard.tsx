@@ -56,7 +56,7 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       {/* TopAppBar (Mobile) */}
       <header className="flex md:hidden justify-between items-center w-full px-4 h-14 bg-slate-900 dark:bg-slate-950 border-b border-slate-700 dark:border-slate-800 sticky top-0 z-50">
       <span className="text-lg font-bold text-slate-100">Greenhouse Ops</span>
-      <button aria-label="account_circle" onClick={onOpenProfile} className="p-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Account" onClick={onOpenProfile} className="p-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined">account_circle</span>
       </button>
       </header>

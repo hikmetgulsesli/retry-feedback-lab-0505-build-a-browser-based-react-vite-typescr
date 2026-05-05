@@ -63,11 +63,11 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
 
   const statusBadge = (status: string) => {
     const map: Record<string, { bg: string; text: string; dot: string }> = {
-      new: { bg: 'bg-blue-500/10', text: 'text-blue-700', dot: 'bg-blue-500' },
-      contacted: { bg: 'bg-amber-500/10', text: 'text-amber-700', dot: 'bg-amber-500' },
-      proposal: { bg: 'bg-emerald-500/10', text: 'text-emerald-700', dot: 'bg-emerald-500' },
-      negotiating: { bg: 'bg-purple-500/10', text: 'text-purple-700', dot: 'bg-purple-500' },
-      closed: { bg: 'bg-slate-500/10', text: 'text-slate-700', dot: 'bg-slate-500' },
+      new: { bg: 'bg-blue-500/10', text: 'text-blue-400', dot: 'bg-blue-500' },
+      contacted: { bg: 'bg-amber-500/10', text: 'text-amber-400', dot: 'bg-amber-500' },
+      proposal: { bg: 'bg-emerald-500/10', text: 'text-emerald-400', dot: 'bg-emerald-500' },
+      negotiating: { bg: 'bg-purple-500/10', text: 'text-purple-400', dot: 'bg-purple-500' },
+      closed: { bg: 'bg-slate-500/10', text: 'text-slate-400', dot: 'bg-slate-500' },
     };
     const s = map[status] || map.new;
     return (

@@ -12,12 +12,11 @@ import { useAppContext } from "../hooks/useAppState";
 
 interface EmptyStateDashboardProps {
   onCreateLead?: () => void;
-  onOpenProfile?: () => void;
 }
 
 export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
   const { state, actions } = useAppContext();
-  const { onCreateLead, onOpenProfile } = props;
+  const { onCreateLead } = props;
   const [search, setSearch] = useState(state.searchQuery);
 
   const nav = (page: string) => (e: React.MouseEvent) => {
@@ -41,13 +40,13 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       <input className="bg-slate-800 border-none rounded text-sm text-slate-100 pl-8 pr-3 py-1 focus:ring-1 focus:ring-blue-500 placeholder-slate-500 w-64 h-7" placeholder="Search operations..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
       <div className="flex items-center gap-2">
-      <button aria-label="Notifications" aria-disabled="true" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Notifications" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined text-[20px]">notifications</span>
       </button>
-      <button aria-label="Help" aria-disabled="true" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Help" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined text-[20px]">help_outline</span>
       </button>
-      <button aria-label="Account" onClick={onOpenProfile} className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="Account" className="p-1.5 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined text-[20px]">account_circle</span>
       </button>
       </div>
@@ -56,7 +55,7 @@ export function EmptyStateDashboard(props: EmptyStateDashboardProps) {
       {/* TopAppBar (Mobile) */}
       <header className="flex md:hidden justify-between items-center w-full px-4 h-14 bg-slate-900 dark:bg-slate-950 border-b border-slate-700 dark:border-slate-800 sticky top-0 z-50">
       <span className="text-lg font-bold text-slate-100">Greenhouse Ops</span>
-      <button aria-label="account_circle" onClick={onOpenProfile} className="p-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
+      <button aria-label="account_circle" className="p-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 rounded">
       <span className="material-symbols-outlined">account_circle</span>
       </button>
       </header>

@@ -63,11 +63,11 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
 
   const statusBadge = (status: string) => {
     const map: Record<string, { bg: string; text: string; dot: string }> = {
-      new: { bg: 'bg-blue-500/10', text: 'text-blue-700', dot: 'bg-blue-500' },
-      contacted: { bg: 'bg-amber-500/10', text: 'text-amber-700', dot: 'bg-amber-500' },
-      proposal: { bg: 'bg-emerald-500/10', text: 'text-emerald-700', dot: 'bg-emerald-500' },
-      negotiating: { bg: 'bg-purple-500/10', text: 'text-purple-700', dot: 'bg-purple-500' },
-      closed: { bg: 'bg-slate-500/10', text: 'text-slate-700', dot: 'bg-slate-500' },
+      new: { bg: 'bg-blue-500/10', text: 'text-blue-400', dot: 'bg-blue-500' },
+      contacted: { bg: 'bg-amber-500/10', text: 'text-amber-400', dot: 'bg-amber-500' },
+      proposal: { bg: 'bg-emerald-500/10', text: 'text-emerald-400', dot: 'bg-emerald-500' },
+      negotiating: { bg: 'bg-purple-500/10', text: 'text-purple-400', dot: 'bg-purple-500' },
+      closed: { bg: 'bg-slate-500/10', text: 'text-slate-400', dot: 'bg-slate-500' },
     };
     const s = map[status] || map.new;
     return (
@@ -123,10 +123,10 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       </div>
       </div>
       <div className="flex items-center gap-xs">
-      <button aria-label="Notifications" aria-disabled="true" className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8">
+      <button aria-label="Notifications" className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8">
       <span className="material-symbols-outlined">notifications</span>
       </button>
-      <button aria-label="Help" aria-disabled="true" className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8">
+      <button aria-label="Help" className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8">
       <span className="material-symbols-outlined">help_outline</span>
       </button>
       <button aria-label="Account" onClick={onOpenProfile} className="text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-900 transition-colors cursor-pointer active:opacity-80 p-1 rounded flex items-center justify-center w-8 h-8 ml-2">
@@ -215,7 +215,7 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       <button className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled={true}>
       <span className="material-symbols-outlined text-sm">chevron_left</span>
       </button>
-      <button className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled={filteredTasks.length <= 10}>
+      <button className="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors">
       <span className="material-symbols-outlined text-sm">chevron_right</span>
       </button>
       </div>

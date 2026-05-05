@@ -8,10 +8,22 @@
 // 4. Replace placeholder data with props/state
 
 import { useState } from "react";
+import { useAppContext } from "../hooks/useAppState";
 
 interface LeadsDashboardProps {}
 
 export function LeadsDashboard(props: LeadsDashboardProps) {
+  const { state, actions } = useAppContext();
+  const [search, setSearch] = useState(state.searchQuery);
+  const [filter, setFilter] = useState('');
+
+  const nav = (page: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    actions.navigate(page as any);
+  };
+
+  const page = state.currentPage;
+
   return (
     <>
       {/* SideNavBar */}
@@ -26,19 +38,19 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       </div>
       </div>
       <div className="flex-1 py-md flex flex-col gap-xs overflow-y-auto">
-      <a className="bg-blue-600/10 text-blue-500 border-r-2 border-blue-600 flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#">
+      <a className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'leads' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('leads')}>
       <span className="material-symbols-outlined mr-md">leaderboard</span>
       <span className="font-label-md text-label-md">Leads</span>
       </a>
-      <a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#">
+      <a className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'pipeline' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('pipeline')}>
       <span className="material-symbols-outlined mr-md">view_kanban</span>
       <span className="font-label-md text-label-md">Pipeline</span>
       </a>
-      <a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#">
+      <a className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'insights' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('insights')}>
       <span className="material-symbols-outlined mr-md">analytics</span>
       <span className="font-label-md text-label-md">Insights</span>
       </a>
-      <a className="flex items-center px-4 py-2 text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80" href="#">
+      <a className={`flex items-center px-4 py-2 font-inter text-xs tracking-tight transition-all duration-150 ease-in-out cursor-pointer active:opacity-80 ${page === 'settings' ? 'bg-blue-600/10 text-blue-500 border-r-2 border-blue-600' : 'text-slate-400 hover:bg-slate-800 dark:hover:bg-slate-800/50'}`} href="#" onClick={nav('settings')}>
       <span className="material-symbols-outlined mr-md">settings</span>
       <span className="font-label-md text-label-md">Settings</span>
       </a>
@@ -53,7 +65,7 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       <div className="md:hidden text-lg font-bold text-slate-100 mr-4">Greenhouse Ops</div>
       <div className="hidden md:flex relative text-slate-400">
       <span className="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-sm">search</span>
-      <input className="bg-surface-container-high border-none rounded pl-8 pr-4 py-1 text-sm text-on-surface focus:ring-1 focus:ring-primary-container h-8 w-64" placeholder="Search operations..." type="text" />
+      <input className="bg-surface-container-high border-none rounded pl-8 pr-4 py-1 text-sm text-on-surface focus:ring-1 focus:ring-primary-container h-8 w-64" placeholder="Search operations..." type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
       </div>
       <div className="flex items-center gap-xs">
@@ -79,7 +91,7 @@ export function LeadsDashboard(props: LeadsDashboardProps) {
       <div className="flex items-center gap-md">
       <div className="relative w-full md:w-auto">
       <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
-      <input className="w-full md:w-64 h-[40px] bg-surface-container border border-outline-variant rounded pl-10 pr-4 font-body-sm text-body-sm text-on-surface focus:border-primary-container focus:ring-0 transition-colors" placeholder="Filter leads..." type="text" />
+      <input className="w-full md:w-64 h-[40px] bg-surface-container border border-outline-variant rounded pl-10 pr-4 font-body-sm text-body-sm text-on-surface focus:border-primary-container focus:ring-0 transition-colors" placeholder="Filter leads..." type="text" value={filter} onChange={(e) => setFilter(e.target.value)} />
       </div>
       <button className="h-[40px] px-lg bg-primary-container text-on-primary-container rounded font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center gap-xs shrink-0">
       <span className="material-symbols-outlined text-sm">add</span>
